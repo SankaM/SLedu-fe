@@ -1,0 +1,69 @@
+.navB{
+    background: linear-gradient(90deg, rgba(221,223,236,1) 0%, rgba(54,2,13,1) 100%, rgba(120,4,152,1) 100%);
+    height: 60px;
+}
+
+.mainHead{
+    font-size: 30px;
+    font-weight: 700;
+    color: #202c2d;
+    text-shadow:  0 1px #808d93, -1px 0 #cdd2d5, -1px 2px #808d93, -2px 1px #cdd2d5, -2px 3px #808d93, -3px 2px #cdd2d5, -3px 4px #808d93, -4px 3px #cdd2d5, -4px 5px #808d93, -5px 4px #cdd2d5, -5px 6px #808d93, -6px 5px #cdd2d5, -6px 7px #808d93, -7px 6px #cdd2d5, -7px 8px #808d93, -8px 7px #cdd2d5;
+    font-family: 'Sofia';
+    font-style:italic;
+    margin-left:15px;
+    padding-top: 10px;
+}
+.navBtn{
+    float: right;
+    background: #451622;
+    margin: 10px 8px;
+}
+#dropdown-basic-button{
+    background-color: #451622;
+}
+#dropdown-basic-button:hover{
+    background-color: #5D3641;
+}
+.signBtn{
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
+    border:1px solid #007bff;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+}
+.navBtn:hover{
+    text-decoration: none;
+    color: #fff;
+    background-color:#5D3641;
+}
+.gradeNav{
+    background-color:#ECE9E9 ;
+    height: 40px;
+}
+.gradetbl{
+    display: table;
+}
+.gradeBtn{
+    font-size: 20px;
+    padding: 3px 15px;
+    margin: auto 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: darkcyan;
+    vertical-align: middle;
+    display: table-cell;
+    height: 40px;
+}
+.gradeBtn:hover{
+    text-decoration: none;
+    background-color: rgb(2, 39, 39);
+    color: #fff;
+}
+.gradeBtn:focus{
+    text-decoration: none;
+    background-color: rgb(7, 194, 32);
+    color: #fff;
+}
