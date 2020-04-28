@@ -3,6 +3,7 @@ import Aux from './Wrap';
 import '../Style/Qcard.css';
 import areaImg from '../CoverImgs/_5area.jpg';
 import { Button } from 'react-bootstrap';
+import swal from '@sweetalert/with-react';
 
 class Qcard extends Component {
     constructor(props){
@@ -40,10 +41,39 @@ class Qcard extends Component {
     }
 
     submitAnswer=()=>{
-        if(this.state.UserAnswer === this.props.Quations[0].correctAnswer){
-            alert("Yes!! you are correct")
+        if(this.state.UserAnswer=== null){
+            alert("bad")
         }
-        else alert("Ohh!!! You are wrong")
+        else
+        {
+            if(this.state.UserAnswer === this.props.Quations[0].correctAnswer)
+            {
+                swal({
+                    title: "Yes ! It's correct",
+                    text: "Very good,Keep going",
+                    icon: "success",
+                    closeOnClickOutside: false,
+                    button: "Go Ahead",
+                  }).then(()=>{
+                    this.props.paginateAnswer();
+                  });
+                  
+            }
+            else 
+            {
+                swal({
+                    title: "Oh! It's wrong",
+                    text: "It's ok,Keep going",
+                    icon: "error",
+                    button: "Go Ahead",
+                    closeOnClickOutside: false,
+                }).then(()=>{
+                    this.props.paginateAnswer();
+                })
+                
+            }
+        }
+            
     }
     ckeckBoxHandlerOne=()=>{
         this.refs.answer2.checked = false;
@@ -131,8 +161,9 @@ class Qcard extends Component {
                                         value={this.state.answers[0]}
                                         ref="answer1"
                                         onClick={this.ckeckBoxHandlerOne}
+                                        className="ansCheck"
                                         />
-                                        &nbsp;&nbsp;{this.state.answers[0]}
+                                        &nbsp;&nbsp;&nbsp;{this.state.answers[0]}
                                     </label>
                                 </div>
                                 <div className="answer">
@@ -141,8 +172,9 @@ class Qcard extends Component {
                                         value={this.state.answers[1]}
                                         ref="answer2"
                                         onClick={this.ckeckBoxHandlerTwo}
+                                        className="ansCheck"
                                         />
-                                        &nbsp;&nbsp;{this.state.answers[1]}
+                                        &nbsp;&nbsp;&nbsp;{this.state.answers[1]}
                                     </label>
                                 </div>
                             </div>
@@ -153,8 +185,9 @@ class Qcard extends Component {
                                         value={this.state.answers[2]}
                                         ref="answer3"
                                         onClick={this.ckeckBoxHandlerThree}
+                                        className="ansCheck"
                                         />
-                                        &nbsp;&nbsp;{this.state.answers[2]}
+                                        &nbsp;&nbsp;&nbsp;{this.state.answers[2]}
                                     </label>
                                 </div>
                                 <div className="answer">
@@ -163,8 +196,9 @@ class Qcard extends Component {
                                         value={this.state.answers[3]}
                                         ref="answer4"
                                         onClick={this.ckeckBoxHandlerFour}
+                                        className="ansCheck"
                                         />
-                                        &nbsp;&nbsp;{this.state.answers[3]}
+                                        &nbsp;&nbsp;&nbsp;{this.state.answers[3]}
                                     </label>
                                 </div>
                             </div>
