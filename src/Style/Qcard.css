@@ -1,6 +1,10 @@
 .Qcard{
-    background-color: coral;
     margin: 10px auto;
+    background: rgb(34,193,195);
+    background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(225,237,160,1) 40%);
+    -webkit-box-shadow: -1px 3px 12px 6px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 3px 12px 6px rgba(0,0,0,0.75);
+    box-shadow: -1px 3px 12px 6px rgba(0,0,0,0.75);
 }
 .quationImg{
     width: 250px;
@@ -10,7 +14,7 @@
 }
 .answer{
     margin:10px 50px 0 100px;
-    background-color: rgb(122, 121, 139);
+    background: linear-gradient(90deg, rgba(172,158,142,1) 0%, rgba(227,91,91,1) 68%, rgba(106,86,96,1) 86%);
     padding-left: 10px;
     border-radius: 5px;
 }
@@ -24,6 +28,13 @@
     font-size: 25px;
     font-weight: 700;
 }
+.btnWrap{
+    text-align: center;
+}
 .submitBtn{
-    float: right;
+    background-color: rgb(211, 39, 39);
+    border: 2px solid black;
+    padding: 4px 20px;
+    border-radius: 5px;
+    color: rgb(221, 218, 218);
 }
