@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Aux from './Wrap';
 import '../Style/Qcard.css';
-import areaImg from '../CoverImgs/_5area.jpg';
 import swal from '@sweetalert/with-react';
 
 class Qcard extends Component {
@@ -169,7 +168,7 @@ class Qcard extends Component {
                                 <span>{this.props.Quations[0].quationId} </span>{this.props.Quations[0].quation}
                             </h1>
                             <div className="qImg">
-                                <img src={areaImg} className="quationImg" alt="quationimage" />
+                                <img src="https://sl-edu.s3-ap-southeast-1.amazonaws.com/cover-images/_5area.jpg" className="quationImg" alt="quationimage" />
                             </div>
                             <div className="row mt-5 mb-4">
                                 <div className="col-6">
