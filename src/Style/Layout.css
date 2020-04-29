@@ -2,6 +2,9 @@
     background: linear-gradient(90deg, rgba(221,223,236,1) 0%, rgba(54,2,13,1) 100%, rgba(120,4,152,1) 100%);
     height: 60px;
 }
+.MyRow{
+    display: flex;
+}
 
 .mainHead{
     font-size: 30px;

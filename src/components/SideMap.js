@@ -9,7 +9,7 @@ const SideMap=(props)=>{
             <div id="sideMap">
             {
                 props.Subject.map(sub=>
-                    <Link to="/#" className="sideMaplink"><h3 className="sideMapBtn">{sub}</h3></Link>
+                    <Link to="/_5maths" className="sideMaplink"><h3 className="sideMapBtn">{sub}</h3></Link>
                 )
             }
             </div>

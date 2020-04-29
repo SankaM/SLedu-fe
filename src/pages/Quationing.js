@@ -21,6 +21,12 @@ class Examing extends Component {
                         "quation":"පැතත්ක  දිග 9 cm  සවිධි පන්චාශ්‍රයක  පරිමිතිය සොයන්න ",
                         "correctAnswer":"45 cm",
                         otherAnswers:["42 cm","50 cm","48 cm","45 cm"]
+                    },
+                    {   
+                        "quationId":4,
+                        "quation":"පැතත්ක  දිග 10 cm  සමචතුරශ්‍රයක  පරිමිතිය සොයන්න ",
+                        "correctAnswer":"40 cm",
+                        otherAnswers:["42 cm","50 cm","60 cm","35 cm"]
                     }
                 ] ,
                 currentPage:1,
@@ -30,7 +36,7 @@ class Examing extends Component {
             paginate=()=>{
                 let i = this.state.currentPage;
                 i++;
-                if(i<=3){
+                if(i<=4){
                     this.setState({currentPage:i})
                 }  
             }
