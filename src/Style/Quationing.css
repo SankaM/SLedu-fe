@@ -1,0 +1,57 @@
+.model_body{
+    padding: 5px;
+    position: relative;
+}
+#mark{
+    position: absolute;
+    text-align: center;
+    font-size: 23px;
+    padding-top: 16px;
+    font-weight: 700;
+    top: 15px;
+    right: 15px;
+    width: 75px;
+    height: 75px;
+    background:rgb(247, 195, 195);
+    border: 2px solid rgb(191, 151, 151);
+    color: red;
+    -webkit-box-shadow: 4px 6px 3px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 4px 6px 3px 0px rgba(0,0,0,0.75);
+box-shadow: 4px 6px 3px 0px rgba(0,0,0,0.75);
+}
+.expHader{
+    font-size: 28px;
+    background:linear-gradient(90deg, rgba(221,223,236,1) 0%, rgba(54,2,13,1) 100%, rgba(120,4,152,1) 100%);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 700;
+    padding: 8px 0;
+    color: rgb(28, 0, 130);
+}
+.haderWrap{
+    text-align: center;
+}
+.subHaderModel{
+    font-size: 24px;
+    text-align: center;
+    background-color: rgb(231, 230, 237);
+    border: 2px solid rgb(174, 174, 179);
+    padding: 5px 0;
+    color: rgb(2, 0, 54);
+    font-family: initial;
+}
+.subHaderModel2{
+    font-size: 20px;
+    text-align: center;
+    background-color: rgb(231, 230, 237);
+    border: 2px solid rgb(174, 174, 179);
+    padding: 5px 0;
+    color: rgb(2, 0, 54);
+    font-family: initial;
+}
+.hader_Num{
+    background-color: rgb(
+        197, 197, 212
+        );
+    padding: 0px 7px;
+    border-radius: 5px;
+}

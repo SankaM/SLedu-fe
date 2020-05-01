@@ -13,7 +13,6 @@ class Qcard extends Component {
             wrong:0
         }
     }
-
    componentWillReceiveProps(nextProps){
         this.refs.answer1.checked = false;
         this.refs.answer2.checked = false;
@@ -62,6 +61,7 @@ class Qcard extends Component {
                     button: "Go Ahead",
                   }).then(()=>{
                     this.props.paginateAnswer();
+                    this.props.getReslt(this.state.correct,this.state.wrong);
                   });
                 
                 let corr = this.state.correct;
@@ -80,6 +80,7 @@ class Qcard extends Component {
                     closeOnClickOutside: false,
                 }).then(()=>{
                     this.props.paginateAnswer();
+                    this.props.getReslt(this.state.correct,this.state.wrong);
                 })
                 let wro = this.state.wrong;
                 wro++;
@@ -88,7 +89,6 @@ class Qcard extends Component {
                 })
             }
         }
-            
     }
 
     ckeckBoxHandlerOne=()=>{

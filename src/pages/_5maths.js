@@ -19,7 +19,7 @@ class _5maths extends Component {
                             </Link>
                             <Lcard lesson="වර්ගඵලය" ImgSrc={areaImg}/>
                             <Lcard lesson="භාග" ImgSrc={parimiImg}/>
-                            <Lcard lesson="කාලය" ImgSrc={parimiImg}/>
+                            <Lcard lesson="කාලය" ImgSrc="https://sl-edu.s3-ap-southeast-1.amazonaws.com/cover-images/clock.jpg"/>
                             <Lcard lesson="කාලය" ImgSrc={parimiImg}/>
                             <Lcard lesson="කාලය" ImgSrc={parimiImg}/>
                             <Lcard lesson="කාලය" ImgSrc={parimiImg}/>

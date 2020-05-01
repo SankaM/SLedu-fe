@@ -1,59 +1,100 @@
 import React, { Component } from 'react';
 import Layout from '../components/Layout';
 import Qcard from '../components/Qcard';
-import '../Style/common.css'
+import Qreviwe from '../components/Qreview';
+import {Modal,Button} from 'react-bootstrap';
+import '../Style/common.css';
+import '../Style/Quationing.css';
 class Examing extends Component {
-    state = { quations:[
-                    {   
+    state = { quations:[{   
                         "quationId":1,
                         "quation":"පහත දී ඇති රුපයේ පරිමිතිය සොයන්න",
                         "correctAnswer":"24 cm",
                         otherAnswers:["25 cm","23 cm","22 cm","24 cm"]
-                    },
-                    {
-                        "quationId":2,
-                        "quation":"පැතත්ක  දිග 4cm  සමචතුරශ්‍රයක පරිමිතිය සොයන්න ",
-                        "correctAnswer":"16 cm",
-                        otherAnswers:["20 cm","15 cm","17 cm","16 cm"]
-                    },
-                    {   
-                        "quationId":3,
-                        "quation":"පැතත්ක  දිග 9 cm  සවිධි පන්චාශ්‍රයක  පරිමිතිය සොයන්න ",
-                        "correctAnswer":"45 cm",
-                        otherAnswers:["42 cm","50 cm","48 cm","45 cm"]
-                    },
-                    {   
-                        "quationId":4,
-                        "quation":"පැතත්ක  දිග 10 cm  සමචතුරශ්‍රයක  පරිමිතිය සොයන්න ",
-                        "correctAnswer":"40 cm",
-                        otherAnswers:["42 cm","50 cm","60 cm","35 cm"]
                     }
                 ] ,
                 currentPage:1,
-                quationPerPage:1
+                quationPerPage:1,
+                resultModel:false,
+                corrAns:0,
+                wronAns:0,
+                mark:0
             }   
         
+            // componentDidMount(){
+            //     this.getQuation();
+            // }
+            // getQuation=()=>{
+            //     fetch('http://ec2-54-255-240-216.ap-southeast-1.compute.amazonaws.com:3005/v1/tutorials/questions').then(responc=> responc.json()).then(res=>{
+            //         this.setState({
+            //             quations:res
+            //         })
+            //     })
+            // }
+
+            markGanarator=(corr,wro)=>{
+                let mark = corr/(corr+wro) * 100
+                this.setState({
+                    corrAns:corr,
+                    wronAns:wro,
+                    mark:mark
+                })
+            }
+
             paginate=()=>{
                 let i = this.state.currentPage;
-                i++;
-                if(i<=4){
+                if(this.state.currentPage === this.state.quations.length){
+                    this.setState({
+                        resultModel:true
+                    })
+                }
+                else{
+                    i++;
                     this.setState({currentPage:i})
-                }  
+                }
             }
 
     render() { 
         const indexOfLastQuation = this.state.currentPage * this.state.quationPerPage;
         const indexOfFirstQuation = indexOfLastQuation - this.state.quationPerPage;
         const currentQuation = this.state.quations.slice(indexOfFirstQuation,indexOfLastQuation);
+        let show = this.state.resultModel
         return (
                 <Layout>
                     <div>
                         <h6 className="root">Grade 5 / ganithaya / Parimithiya</h6>
                         
-                            <Qcard Quations={currentQuation} 
-                            paginateAnswer={this.paginate}/>
-
+                            { <Qcard Quations={currentQuation} 
+                            paginateAnswer={this.paginate} getReslt={this.markGanarator}/> 
+    }
                     </div>
+                    <Modal
+                        size="lg"
+                        show={show}
+                        aria-labelledby="example-modal-sizes-title-lg"
+                    >
+                    <div className="model_body">
+                        <div id="mark">{this.state.mark}%</div>
+                        <div className="haderWrap">
+                            <h1 className="expHader">Explaintor</h1>
+                        </div>
+                        <h3 className="subHaderModel">You have successfully  faced for <span className="hader_Num">{this.state.currentPage}</span> Quations</h3>
+                        <div className="row">
+                            <div className="col-6">
+                                <h3 className="subHaderModel2">Number of wrongs :  <span className="hader_Num">{this.state.wronAns}</span></h3>
+                            </div>
+                            <div className="col-6">
+                                <h3 className="subHaderModel2">Number of Correct :  <span className="hader_Num">{this.state.corrAns}</span></h3>
+                            </div>
+                        </div>
+                        <div>
+                            <Qreviwe/>
+                            <Qreviwe/>
+                            <Qreviwe/>
+                        </div>
+                        <Button onClick={()=>{this.setState({resultModel:false})}}>Click Me</Button>
+                    </div>
+                    </Modal>
                 </Layout>
            );
     }
