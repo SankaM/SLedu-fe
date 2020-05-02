@@ -6,31 +6,33 @@ import {Modal,Button} from 'react-bootstrap';
 import '../Style/common.css';
 import '../Style/Quationing.css';
 class Examing extends Component {
-    state = { quations:[{   
-                        "quationId":1,
-                        "quation":"පහත දී ඇති රුපයේ පරිමිතිය සොයන්න",
-                        "correctAnswer":"24 cm",
-                        otherAnswers:["25 cm","23 cm","22 cm","24 cm"]
-                    }
-                ] ,
+    state = { quations:[] ,
                 currentPage:1,
                 quationPerPage:1,
                 resultModel:false,
+                loading:false, 
                 corrAns:0,
                 wronAns:0,
                 mark:0
             }   
         
-            // componentDidMount(){
-            //     this.getQuation();
-            // }
-            // getQuation=()=>{
-            //     fetch('http://ec2-54-255-240-216.ap-southeast-1.compute.amazonaws.com:3005/v1/tutorials/questions').then(responc=> responc.json()).then(res=>{
-            //         this.setState({
-            //             quations:res
-            //         })
-            //     })
-            // }
+            componentDidMount(){
+                this.getQuation();
+                // fetch('http://ec2-54-255-240-216.ap-southeast-1.compute.amazonaws.com:3005/v1/tutorials/questions').then(responc=> responc.json()).then(res=>{
+                //     this.setState({
+                //         quations:res
+                //     })
+                // })
+            }
+            getQuation=()=>{
+                this.setState({loading:true})
+                fetch('http://ec2-54-255-240-216.ap-southeast-1.compute.amazonaws.com:3005/v1/tutorials/questions').then(responc=> responc.json()).then(res=>{
+                    this.setState({
+                        quations:res
+                    })
+                })
+                this.setState({loading:false})
+            }
 
             markGanarator=(corr,wro)=>{
                 let mark = corr/(corr+wro) * 100
@@ -53,8 +55,9 @@ class Examing extends Component {
                     this.setState({currentPage:i})
                 }
             }
-
     render() { 
+        console.log(this.state.quations);
+        console.log(this.state.loading);
         const indexOfLastQuation = this.state.currentPage * this.state.quationPerPage;
         const indexOfFirstQuation = indexOfLastQuation - this.state.quationPerPage;
         const currentQuation = this.state.quations.slice(indexOfFirstQuation,indexOfLastQuation);
@@ -64,9 +67,10 @@ class Examing extends Component {
                     <div>
                         <h6 className="root">Grade 5 / ganithaya / Parimithiya</h6>
                         
-                            { <Qcard Quations={currentQuation} 
-                            paginateAnswer={this.paginate} getReslt={this.markGanarator}/> 
-    }
+                            {<Qcard Quations={currentQuation} 
+                            paginateAnswer={this.paginate} getReslt={this.markGanarator} loading={this.state.loading}/> }
+                            <button onClick={()=>{console.log(currentQuation);console.log(this.state.quations)}}> click</button>
+    
                     </div>
                     <Modal
                         size="lg"
