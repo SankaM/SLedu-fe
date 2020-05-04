@@ -7,23 +7,24 @@ class Qcard extends Component {
     constructor(props){
         super(props);
         this.state = {
-            quationDetails : this.props.Quations,
-            // answers:this.props.Quations[0].otherAnswers,
+            answers:this.props.Quations[0].otherAnswers,
             UserAnswer: null,
             correct:0,
             wrong:0
         }
     }
     componentDidMount(){
-        console.log(this.state.quationDetails);
-        console.log(this.props.Quations[0]);
+        this.setState({
+            answers:this.props.Quations[0].otherAnswers,
+        })
     }
+    
    componentWillReceiveProps(nextProps){
         this.refs.answer1.checked = false;
         this.refs.answer2.checked = false;
         this.refs.answer3.checked = false;
         this.refs.answer4.checked = false;
-        // this.suffleAnswer(nextProps.Quations[0].otherAnswers);
+        this.suffleAnswer(nextProps.Quations[0].otherAnswers);
         this.setState({
             UserAnswer:null
         })
@@ -47,11 +48,11 @@ class Qcard extends Component {
     submitAnswer=()=>{
         if(this.state.UserAnswer=== null){
             swal({
-                title: "Yes ! It's correct",
-                text: "Very good,Keep going",
-                icon: "Info",
+                title: "You did not select any answer",
+                text: "Please select the answer",
+                icon: "warning",
                 closeOnClickOutside: false,
-                button: "Go Ahead",
+                button: "Ok",
               })
         }
         else
@@ -162,46 +163,41 @@ class Qcard extends Component {
     }
    
     render() { 
-    const a = 1
-        if(this.props.loading){
-            return(<h1>Loading</h1>)
-        }
         return ( 
             <Aux>
                 <div className="MyRow">
-                    <button onClick={()=>{console.log(<span>{this.props.Quations[0].id}</span>)}}>check</button>
                     <div className="col-2">
                     </div>
                     <div className="col-8">
                         <div className="Qcard">
                             <h1 className="quation">
-                                <span>{/* this.props.Quations[0].id */}</span>{/* this.props.Quations[0].question */}
+                                <span>{this.props.Quations[0].id}  </span>{this.props.Quations[0].question}
                             </h1>
                             <div className="qImg">
-                                <img src="https://sl-edu.s3-ap-southeast-1.amazonaws.com/cover-images/_5area.jpg" className="quationImg" alt="quationimage" />
+                                <img src={this.props.Quations[0].questionImgUrl} className="quationImg" alt="quationimage" />
                             </div>
                             <div className="row mt-5 mb-4">
                                 <div className="col-6">
                                     <div className="answer">
                                         <label className="lebAns">
                                             <input type="checkbox" 
-                                            value={/* this.state.answers[0] */a}
+                                            value={this.state.answers[0]}
                                             ref="answer1"
                                             onClick={this.ckeckBoxHandlerOne}
                                             className="ansCheck"
                                             />
-                                            &nbsp;&nbsp;&nbsp;{/* this.state.answers[0] */}
+                                            &nbsp;&nbsp;&nbsp;{this.state.answers[0]}
                                         </label>
                                     </div>
                                     <div className="answer">
                                         <label className="lebAns">
                                             <input type="checkbox" 
-                                            value={/* this.state.answers[1] */a}
+                                            value={this.state.answers[1]}
                                             ref="answer2"
                                             onClick={this.ckeckBoxHandlerTwo}
                                             className="ansCheck"
                                             />
-                                            &nbsp;&nbsp;&nbsp;{/* this.state.answers[1] */}
+                                            &nbsp;&nbsp;&nbsp;{this.state.answers[1]}
                                         </label>
                                     </div>
                                 </div>
@@ -209,23 +205,23 @@ class Qcard extends Component {
                                     <div className="answer">
                                         <label className="lebAns">
                                             <input type="checkbox" 
-                                            value={/* this.state.answers[2] */a}
+                                            value={this.state.answers[2]}
                                             ref="answer3"
                                             onClick={this.ckeckBoxHandlerThree}
                                             className="ansCheck"
                                             />
-                                            &nbsp;&nbsp;&nbsp;{/* this.state.answers[2] */}
+                                            &nbsp;&nbsp;&nbsp;{this.state.answers[2]}
                                         </label>
                                     </div>
                                     <div className="answer">
                                         <label className="lebAns">
                                             <input type="checkbox"
-                                            value={/* this.state.answers[3] */a}
+                                            value={this.state.answers[3]}
                                             ref="answer4"
                                             onClick={this.ckeckBoxHandlerFour}
                                             className="ansCheck"
                                             />
-                                            &nbsp;&nbsp;&nbsp;{/* this.state.answers[3] */}
+                                            &nbsp;&nbsp;&nbsp;{this.state.answers[3]}
                                         </label>
                                     </div>
                                 </div>
