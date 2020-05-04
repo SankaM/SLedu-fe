@@ -3,6 +3,7 @@ import '../Style/Qreview.css';
 import Aux from './Wrap';
 
 const Qreview=(props)=>{
+    let obj = props.Uanswer.find(obj=>obj.id===props.qDetails.id);
     return(
         <Aux>
             <div className="reWraper">
@@ -22,7 +23,9 @@ const Qreview=(props)=>{
                         </p>
                     </div>
                     <div className="row">
-                        <div className="col-6"></div>
+                        <div className="col-6">
+                            <p className="QcAnswer"> Your Answer : <span className="answerR">{props.qDetails.correctAnswer}</span></p>
+                        </div>
                         <div className="col-6">
                             <p className="QcAnswer"> Correct Answer : <span className="answerR">{props.qDetails.correctAnswer}</span></p>
                         </div>

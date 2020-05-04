@@ -95,6 +95,7 @@ class Qcard extends Component {
                 })
             }
         }
+        this.props.getCorection(this.props.Quations[0].id,this.state.UserAnswer)
     }
 
     ckeckBoxHandlerOne=()=>{

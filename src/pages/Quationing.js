@@ -7,7 +7,8 @@ import Loading from '../Animations/Loading.gif';
 import '../Style/common.css';
 import '../Style/Quationing.css';
 class Examing extends Component {
-    state = { quations:[] ,
+    state = {   quations:[] ,
+                Uanswers:[],
                 currentPage:1,
                 quationPerPage:1,
                 resultModel:false,
@@ -20,7 +21,7 @@ class Examing extends Component {
                 this.getQuation();
             }
             getQuation=()=>{
-                fetch('http://ec2-54-255-240-216.ap-southeast-1.compute.amazonaws.com:3005/v1/tutorials/questions').then(responc=> responc.json()).then(res=>{
+                fetch('http://ec2-54-255-240-216.ap-southeast-1.compute.amazonaws.com:3005/v1/tutor/questions?lessonId=2').then(responc=> responc.json()).then(res=>{
                     this.setState({
                         quations:res,
                         loading:false
@@ -28,9 +29,13 @@ class Examing extends Component {
                 })
 
             }
+
+            setcorrection=(id,userAnswer)=>{
+                this.state.Uanswers.push({id:id,Uanswer:userAnswer})
+            }
+
             markGanarator=(corr,wro)=>{
                 let mark = (corr/(corr+wro) * 100).toFixed(1);
-
                 this.setState({
                     corrAns:corr,
                     wronAns:wro,
@@ -70,9 +75,7 @@ class Examing extends Component {
                         <h6 className="root">Grade 5 / ganithaya / Parimithiya</h6>
                  
                             {<Qcard Quations={currentQuation} 
-                            paginateAnswer={this.paginate} getReslt={this.markGanarator}/>} 
-            
-    
+                            paginateAnswer={this.paginate} getReslt={this.markGanarator} getCorection={this.setcorrection}/>} 
                     </div>
                     <Modal
                         size="lg"
@@ -90,12 +93,12 @@ class Examing extends Component {
                                 <h3 className="subHaderModel2">Correct :  <span className="hader_Num">{this.state.corrAns}</span></h3>
                             </div>
                             <div className="col-6">
-                                <h3 className="subHaderModel2">wrongs :  <span className="hader_Num">{this.state.wronAns}</span></h3>
+                                <h3 className="subHaderModel2">wrong :  <span className="hader_Num">{this.state.wronAns}</span></h3>
                             </div>
                         </div>
                         <div>
                         {
-                            this.state.quations.map((question)=><Qreviwe qDetails={question}/>)
+                            this.state.quations.map((question)=><Qreviwe qDetails={question} Uanswer={this.state.Uanswers}/>)
                         }
                         </div>
                         <Button onClick={()=>{this.setState({resultModel:false})}}>Click Me</Button>
