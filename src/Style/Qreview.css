@@ -4,6 +4,7 @@
     color: rgb(125, 0, 0);
 }
 .reWraper{
+    position: relative;
     background:linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(225,237,160,1) 40%);
     border: 2px solid #808858;
     margin: 15px 20px 40px 20px;
@@ -54,12 +55,30 @@ box-shadow: 7px 12px 5px 0px rgba(0,0,0,0.75);
     font-weight: 600;
 }
 .QcAnswer{
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     margin-top: 20px;
+}
+.QwAnswer{
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-left: 10px;
 }
 .answerR{
     background-color: #D3E0E0;
     border: 2px solid rgb(73, 8, 224);
     padding: 3px 20px;
+}
+.answerRw{
+    background-color: rgb(240, 47, 47);
+    border: 2px solid rgb(105, 2, 2);
+    color: #fff;
+    padding: 3px 20px;
+}
+.markImg{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 80px;
 }

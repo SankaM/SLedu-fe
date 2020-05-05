@@ -1,9 +1,18 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import Aux from './Wrap';
 import '../Style/Layout.css'
 import { Link } from 'react-router-dom';
 import {DropdownButton,Dropdown} from 'react-bootstrap';
+
+
 const Layout=(props)=>{
+    const [grade,setGrade] = useState([]);
+    useEffect(()=>{
+            fetch('http://ec2-54-255-240-216.ap-southeast-1.compute.amazonaws.com:3005/v1/tutor/grades?medium=si').then(res=>res.json()).then((response)=>{
+                setGrade(response);
+            })
+        }
+    )
     return(
         <Aux>
             <div className="myContainer">
@@ -23,8 +32,11 @@ const Layout=(props)=>{
                 </div>
                 <div className="gradeNav">
                     <div id="gradetbl">
-                        <Link to="/_5maths" className="gradeBtn">Grade 5</Link>
-                        <Link to="#" className="gradeBtn">Grade 6</Link>
+                        {
+                            grade.map((gra)=>
+                                <Link to={["/_5maths/",gra.id].join("")} key={gra.id} className="gradeBtn">{gra.name}</Link>
+                            )
+                        }
                     </div>
                 </div>
                 <main>

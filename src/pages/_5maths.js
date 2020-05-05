@@ -7,11 +7,24 @@ import parimiImg from '../CoverImgs/_5parimithiya.png'
 import areaImg from '../CoverImgs/_5area.jpg'
 import { Link } from 'react-router-dom';
 class _5maths extends Component {
-    state = { 
-        subject:["ගණිතය","පරිසරය","සිංහල","බුද්ධ ධර්මය","ඉංග්‍රීසි","දෙමල"],
-        Lessons:[]
-     }
-
+    constructor(props){
+        super(props);
+        this.state = { 
+            subject:[],
+            Lessons:[]
+         }
+    }
+    componentDidMount(){
+        this.getSubject();
+    }
+    componentWillReceiveProps(){
+        this.getSubject();
+    }
+    getSubject=()=>{
+        const {id} = this.props.match.params
+        fetch('http://ec2-54-255-240-216.ap-southeast-1.compute.amazonaws.com:3005/v1/tutor/subjects?gradeId='+id).then(res=>res.json()).then((response)=>{this.setState({subject:response})})
+    }
+    
     render() { 
         const contain = <div>
                             <Link to="/Examing">
@@ -31,7 +44,7 @@ class _5maths extends Component {
             <Layout>
                 <div className="row">
                     <div className="col-2">
-                        <SideMap Subject={this.state.subject}/>
+                        {<SideMap Subject={this.state.subject}/>}
                     </div>
                     <div className="col-8">
                         {contain}
