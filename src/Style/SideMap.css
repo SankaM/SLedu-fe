@@ -6,6 +6,7 @@
 }
 .sideMaplink:hover{
     text-decoration: none;
+
 }
 .sideMapBtn{
     text-align: center;
@@ -17,4 +18,10 @@
     border: 1px solid #b3869d ;
     border-radius: 5px;
     font-weight: 700;
+}
+.sideMapBtn:hover{
+    background: rgb(99, 98, 98);
+}
+.sideMapBtn:focus {
+    background: rgb(15, 189, 15);
 }

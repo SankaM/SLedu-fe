@@ -18,10 +18,10 @@ class Examing extends Component {
                 mark:0
             }   
             componentWillMount(){
-                this.getQuation();
+                this.getQuation(this.props.match.params.id); 
             }
-            getQuation=()=>{
-                fetch('http://ec2-54-255-240-216.ap-southeast-1.compute.amazonaws.com:3005/v1/tutor/questions?lessonId=2').then(responc=> responc.json()).then(res=>{
+            getQuation=(id)=>{
+                fetch('http://ec2-18-140-3-78.ap-southeast-1.compute.amazonaws.com:3005/v1/tutor/questions?lessonId='+id).then(responc=> responc.json()).then(res=>{
                     this.setState({
                         quations:res,
                         loading:false
@@ -61,7 +61,7 @@ class Examing extends Component {
         const currentQuation = this.state.quations.slice(indexOfFirstQuation,indexOfLastQuation);
 
         let show = this.state.resultModel
-        if(this.state.loading){
+        if(this.state.quations.length === 0){
             return(<Layout>
                 <div className="loadingWrap">
                     <img src={Loading} alt="loading" className="loading"/>

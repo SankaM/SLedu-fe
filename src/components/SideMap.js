@@ -8,7 +8,9 @@ const SideMap=(props)=>{
             <div id="sideMap">
             {
                 props.Subject.map(sub=>
-                    <Link to="/_5maths" key={sub.id} className="sideMaplink"><h3 className="sideMapBtn">{sub.name}</h3></Link>
+                    <Link to="#" key={sub.id} className="sideMaplink" onClick={()=>{
+                        props.getLesson(sub.id)
+                    }}><h3 className="sideMapBtn">{sub.name}</h3></Link>
                 )
             }
             </div>

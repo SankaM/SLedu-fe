@@ -8,10 +8,10 @@ import {DropdownButton,Dropdown} from 'react-bootstrap';
 const Layout=(props)=>{
     const [grade,setGrade] = useState([]);
     useEffect(()=>{
-            fetch('http://ec2-54-255-240-216.ap-southeast-1.compute.amazonaws.com:3005/v1/tutor/grades?medium=si').then(res=>res.json()).then((response)=>{
+            fetch('http://ec2-18-140-3-78.ap-southeast-1.compute.amazonaws.com:3005/v1/tutor/grades?medium=si').then(res=>res.json()).then((response)=>{
                 setGrade(response);
             })
-        }
+        },[]
     )
     return(
         <Aux>
@@ -34,7 +34,7 @@ const Layout=(props)=>{
                     <div id="gradetbl">
                         {
                             grade.map((gra)=>
-                                <Link to={["/_5maths/",gra.id].join("")} key={gra.id} className="gradeBtn">{gra.name}</Link>
+                                <Link to={["/Lesson/",gra.id].join("")} key={gra.id} className="gradeBtn">{gra.name}</Link>
                             )
                         }
                     </div>
