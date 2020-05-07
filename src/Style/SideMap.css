@@ -20,8 +20,5 @@
     font-weight: 700;
 }
 .sideMapBtn:hover{
-    background: rgb(99, 98, 98);
-}
-.sideMapBtn:focus {
-    background: rgb(15, 189, 15);
-}
+    background: rgb(194, 194, 202);
+} 

@@ -32,7 +32,7 @@ class _5maths extends Component {
     render() { 
         let contain;
         if(this.state.Lessons.length === 0 ){
-            contain = <h1>Sorry No lessons</h1>
+            contain = <h1>Sorry No lessons entered yet</h1>
         }
         else{
             contain = <div>
@@ -41,8 +41,7 @@ class _5maths extends Component {
                                 <Link to={"/Examing/"+les.id} key={les.id}>
                                     <Lcard lesson={les.name} ImgSrc={les.imageUrl}/>
                                 </Link>
-                            )
-                            
+                            )  
                         }
                       </div>
         }

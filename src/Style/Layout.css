@@ -62,11 +62,10 @@
 }
 .gradeBtn:hover{
     text-decoration: none;
-    background-color: rgb(2, 39, 39);
-    color: #fff;
+    background-color: rgb(48, 180, 180);
+    color: rgb(83, 5, 5);
 }
-.gradeBtn:focus{
-    text-decoration: none;
-    background-color: rgb(7, 194, 32);
-    color: #fff;
+
+#homeLogo{
+    width: 30px;
 }

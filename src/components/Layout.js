@@ -3,6 +3,7 @@ import Aux from './Wrap';
 import '../Style/Layout.css'
 import { Link } from 'react-router-dom';
 import {DropdownButton,Dropdown} from 'react-bootstrap';
+import HomeImg from '../CoverImgs/Home.png';
 
 
 const Layout=(props)=>{
@@ -13,6 +14,15 @@ const Layout=(props)=>{
             })
         },[]
     )
+    const HadleClick=(event)=>{
+        let gradList = document.querySelectorAll('.gradeBtn');
+        gradList.forEach(el => {
+            el.style.background = "none";
+            el.style.color= "darkcyan"
+        });
+        event.target.style.background = 'rgb(48, 180, 180)';
+        event.target.style.color= "#120136"
+    }
     return(
         <Aux>
             <div className="myContainer">
@@ -32,9 +42,12 @@ const Layout=(props)=>{
                 </div>
                 <div className="gradeNav">
                     <div id="gradetbl">
+                        <Link to="/" className="gradeBtn"><img src={HomeImg} alt="Home" id="homeLogo"/></Link>
                         {
                             grade.map((gra)=>
-                                <Link to={["/Lesson/",gra.id].join("")} key={gra.id} className="gradeBtn">{gra.name}</Link>
+                                <Link to={["/Lesson/",gra.id].join("")} key={gra.id} className="gradeBtn"
+                                    onClick={(e)=>HadleClick(e)} 
+                                >{gra.name}</Link>
                             )
                         }
                     </div>
