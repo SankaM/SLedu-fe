@@ -1,0 +1,165 @@
+.Note_Sec{
+    background:linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(225,237,160,1) 40%);
+    margin: 35px auto;
+    width: 90%;
+    border: 2px solid rgb(80, 189, 190);
+    border-radius: 5px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+.NoteHed{
+    text-align: center;
+    font-size: 25px;
+    font-family: monospace;
+    font-weight: 600;
+    background: linear-gradient(90deg, rgba(221,223,236,1) 0%, rgba(54,2,13,1) 100%, rgba(120,4,152,1) 100%);
+    padding: 8px 0;
+    color: rgb(10, 0, 0);
+}
+.rememberSec{
+    width: 98%;
+    height: 100%;
+    background-color: rgb(242, 245, 226);
+    border: 2px solid rgb(151, 153, 142);
+}
+.remHed{
+    text-align: center;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #C9C7C7;
+    padding: 4px;
+}
+.remLi{
+    font-size: 14px;
+}
+.lesHed{
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+    color: rgb(6, 6, 136);
+}
+.mainDefSec{
+    margin-left: 15px;
+    border: 2px solid beige;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+.mainDefImgSec{
+    text-align: center;
+  
+}
+.MainDefImg{
+    width: 170px;
+    margin: 10px 0;
+}
+.mainDef{
+    background-color: #fff;
+    border-radius: 5px;
+    border: 2px solid rgb(141, 125, 125);
+}
+.defHed{
+    font-size:14px;
+    margin: 5px 5px;
+}
+.defPara{
+    margin: 10px 20px;
+}
+.MainTopic{
+    font-size: 20px;
+    font-weight: 600;
+    color: darkcyan;
+}
+.thoerySec{
+    background-color: rgb(162, 230, 247);
+    margin: 15px 5px 15px 0;
+    border-radius: 5px;
+    border: 2px solid rgb(56, 115, 129);
+}
+.thorryImgSec{
+    text-align: center;
+}
+.theoryImg{
+    width: 160px;
+    padding-bottom: 10px;
+}
+.thoery{
+    font-size: 18px;
+    font-weight: 500;
+    color: rgb(160, 46, 46);
+    padding: 10px 15px 10px 40px;
+}
+/* SubDef style */
+.SubDefSec{
+    width: 75%;
+    margin: 20px auto;
+}
+/* note */
+.Note{
+    font-style: oblique;
+    font-size: 16px;
+}
+/* exmple sec */
+.exapSec{
+    background-color: rgb(206, 155, 155);
+    border-radius: 5px;
+    border: 2px solid rgb(141, 125, 125);
+}
+.Exmple{
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(160, 46, 46);
+    padding: 10px 15px 10px 40px;
+}
+/* video sec */
+.refVidSec{
+    width: 100%;
+    height: 100%;
+    background-color: #F2F5E2;
+    margin-left: 20px;
+    border: 2px solid rgb(151, 153, 142);
+    text-align: center;
+}
+.refVid{
+    width:120px;
+    height: 75px;
+    margin-bottom: 20px;
+}
+.modal-content{
+    background-color: rgb(114, 116, 115) !important;
+}
+#vidBtn{
+    background-color: #3e5444;
+    color: #fff;
+    border: 1px solid #2d3d31;
+    border-radius: 5px;
+    padding: 4px 15px;
+    float: right;
+    font-family: -webkit-body;
+}
+#vidBtn:hover{
+    text-decoration: none;
+}
+#quationBtn{
+    background-color: #747d76;
+    border: 2px solid #5b615c;
+    border-radius: 5px;
+    padding: 10px 50px;
+    position: fixed;
+    bottom: 10px;
+    right: 15px;
+    font-size: 25px;
+    color: black;
+    font-family: monospace;
+    font-weight: 600;
+}
+#quationBtn:hover{
+    text-decoration: none;
+    animation: qBtn 1s infinite;
+    -webkit-animation: qBtn 1s infinite;
+}
+@keyframes qBtn {
+    from{background-color: #747d76}
+    to{background-color: rgb(9, 46, 214);}
+}

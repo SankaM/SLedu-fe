@@ -45,7 +45,7 @@ const Layout=(props)=>{
                         <Link to="/" className="gradeBtn"><img src={HomeImg} alt="Home" id="homeLogo"/></Link>
                         {
                             grade.map((gra)=>
-                                <Link to={["/Lesson/",gra.id].join("")} key={gra.id} className="gradeBtn"
+                                <Link to={{pathname:["/Lesson/",gra.id].join("")}} key={gra.id} className="gradeBtn"
                                     onClick={(e)=>HadleClick(e)} 
                                 >{gra.name}</Link>
                             )

@@ -1,0 +1,45 @@
+.startContent{
+    text-align: center;
+}
+.startConHead{
+    font-size: 35px;
+    font-family: monospace;
+    color: #33079b;
+    font-weight: 600;
+    margin-top: 30px;
+}
+.StartWalker{
+    width: 80px;
+}
+.ConHead{
+    text-align: center;
+    font-family: monospace;
+    font-size: 25px;
+    font-weight: 600;
+    color: rgb(24, 4, 78);
+}
+.revHeder{
+    text-align: center;
+    font-family: monospace;
+    font-size: 25px;
+    font-weight: 600;
+    color: rgb(24, 4, 78);
+}
+.revSec{
+    background-color: #EDDE9C;
+}
+.waitConSecHed{
+    margin-top: 30px;
+    color: rgb(201, 13, 13);
+}
+.waitConSecHed2{
+    margin-top: 20px;
+    color: rgb(60, 31, 226);
+}
+.waitConSec{
+    text-align: center;
+}
+.waitConSecImg{
+    margin-top: 30px;
+    width:200px;
+}
