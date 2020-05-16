@@ -18,8 +18,9 @@
     color: rgb(10, 0, 0);
 }
 .rememberSec{
-    width: 98%;
-    height: 100%;
+    width: 100%;
+    /* height: 100%; */
+    margin-left: 10px;
     background-color: rgb(242, 245, 226);
     border: 2px solid rgb(151, 153, 142);
 }
@@ -33,6 +34,9 @@
 }
 .remLi{
     font-size: 14px;
+    padding: 5px 10px;
+    margin: 20px 15px;
+    background-color: rgb(255, 255, 255);
 }
 .lesHed{
     text-align: center;
@@ -114,10 +118,9 @@
 }
 /* video sec */
 .refVidSec{
-    width: 100%;
-    height: 100%;
+    width: 96%;
+    /* height: 100%; */
     background-color: #F2F5E2;
-    margin-left: 20px;
     border: 2px solid rgb(151, 153, 142);
     text-align: center;
 }
@@ -154,12 +157,49 @@
     font-family: monospace;
     font-weight: 600;
 }
+
+/* content sec */
+.containSec{
+    width: 100%;
+    margin-left: 10px;
+    background-color: rgb(242, 245, 226);
+    border: 2px solid rgb(151, 153, 142);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+.content_link_sec{
+    /* text-align: center; */
+    padding: 3px 10px;
+    border-bottom: 2px solid rgb(165, 160, 160);
+}
+.content_link{
+    color: #159C95;
+    margin-left: 20px;
+}
+.content_link:hover{
+    text-decoration: none;
+}
+.Darrow{
+    width: 15px;
+}
+.arrowImgSpan{
+    float: right;
+    padding-right: 20px;
+}
+.subTopSec{
+    display: none;
+}
+.subToplink{
+    font-size: 12px;
+}
+/* content css end*/
 #quationBtn:hover{
     text-decoration: none;
     animation: qBtn 1s infinite;
     -webkit-animation: qBtn 1s infinite;
 }
 @keyframes qBtn {
-    from{background-color: #747d76}
-    to{background-color: rgb(9, 46, 214);}
+    from{background-color: #ff0909}
+    to{background-color: rgb(1, 46, 247);}
 }
+

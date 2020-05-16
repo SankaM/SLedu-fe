@@ -1,3 +1,9 @@
+.lesRow{
+    display: flex;
+}
+.sideMapSec{
+    background-color: #EDDE9C;
+}
 .startContent{
     text-align: center;
 }

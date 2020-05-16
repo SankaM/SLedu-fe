@@ -76,8 +76,8 @@ class _5maths extends Component {
        
         return (
             <Layout>
-                <div className="row">
-                    <div className="col-2">
+                <div className="lesRow">
+                    <div className="col-2 sideMapSec">
                         {<SideMap Subject={this.state.subject} getLesson={this.getLesson}/>}
                     </div>
                     <div className="col-8">
