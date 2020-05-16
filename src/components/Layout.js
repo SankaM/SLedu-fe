@@ -29,7 +29,7 @@ const Layout=(props)=>{
                 <div className="navB">
                     <div className="MyRow">
                         <div className="col-2">
-                            <h2 className="mainHead">තක්සලාව</h2>
+                            <h2 className="mainHead">eSchool.com</h2>
                         </div>
                         <div className="col-10">
                             <Link to="/_5maths" className="navBtn signBtn">Sign In</Link>

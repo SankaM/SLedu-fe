@@ -32,7 +32,7 @@
     color: rgb(24, 4, 78);
 }
 .revSec{
-    background-color: #EDDE9C;
+    background-color:#EDDE9C;
 }
 .waitConSecHed{
     margin-top: 30px;
@@ -48,4 +48,32 @@
 .waitConSecImg{
     margin-top: 30px;
     width:200px;
+}
+
+/* style revision*/
+.revSubHeder{
+    font-size: 14px;
+    font-family: monospace;
+}
+.firstTerm{
+    width: 99%;
+    height: 150px;
+    background-color: #fff;
+    padding-top: 3px;
+    overflow-y: scroll;
+    margin-bottom: 5px;
+}
+.firstTerm::-webkit-scrollbar{
+    display: none;
+}
+.test{
+    width: 75px;
+    height: 80px;
+    background-color: rgb(199, 186, 186);
+    margin:5px 10px;
+    text-align: center;
+    display:inline-block;
+}
+.testImg{
+    width: 45px;
 }

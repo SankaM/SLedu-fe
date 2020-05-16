@@ -5,7 +5,8 @@ import Lcard from '../components/LessonCard';
 import '../Style/Grade5.css';
 import { Link } from 'react-router-dom';
 import StartWalker from '../Animations/walking.gif';
-import LoadingTedy from '../Animations/animated-teddy.gif'
+import LoadingTedy from '../Animations/animated-teddy.gif';
+import TestImg from '../CoverImgs/Test.png'
 class _5maths extends Component {
     constructor(props){
         super(props);
@@ -15,6 +16,65 @@ class _5maths extends Component {
             Lessons:[],
             changed:true,
             data:this.props.location.state,
+            revision:[
+                {
+                    Fterm:[
+                        {
+                            TestNo:1,
+                            TestId:1_1,
+                            NumberOfQuation:25,
+                            time:"20 min"
+                        },
+                        {
+                            TestNo:2,
+                            TestId:1_2,
+                            NumberOfQuation:25,
+                            time:"20 min"
+                        },
+                        {
+                            TestNo:3,
+                            TestId:1_3,
+                            NumberOfQuation:25,
+                            time:"20 min"
+                        }
+                    ],
+                    Sterm:[
+                        {
+                            TestNo:1,
+                            TestId:2_1,
+                            NumberOfQuation:25,
+                            time:"20 min"
+                        },
+                        {
+                            TestNo:2,
+                            TestId:2_2,
+                            NumberOfQuation:25,
+                            time:"20 min"
+                        },
+                        {
+                            TestNo:3,
+                            TestId:2_3,
+                            NumberOfQuation:25,
+                            time:"20 min"
+                        }
+                    ],
+                    Tterm:[
+                        {
+                            TestNo:1,
+                            TestId:3_1,
+                            NumberOfQuation:25,
+                            time:"20 min"
+                        },
+                        {
+                            TestNo:2,
+                            TestId:3_2,
+                            NumberOfQuation:25,
+                            time:"20 min"
+                        }
+                    ],
+
+                }
+            ]
          }
     }
     componentWillMount(){
@@ -84,7 +144,51 @@ class _5maths extends Component {
                         {contain}
                     </div>
                     <div className="col-2 revSec">
-                        <h4 className="revHeder">Revistion</h4>
+                        <h4 className="revHeder">Revision</h4>
+                        <h6 className="revSubHeder">Tests for first term</h6>
+                        <div className="firstTerm">
+                            {this.state.revision[0].Fterm.map((test)=>
+                                <a href="#/">
+                                    <div className="test">
+                                        <h6>Test 1</h6>
+                                        <img src={TestImg} alt="test paper" className="testImg"/>
+                                    </div> 
+                                </a>)
+                            }
+                        </div>
+                        <h6 className="revSubHeder">Tests for second term</h6>
+                        <div className="firstTerm">
+                            {this.state.revision[0].Sterm.map((test)=>
+                                <a href="#/">
+                                    <div className="test">
+                                        <h6>Test 1</h6>
+                                        <img src={TestImg} alt="test paper" className="testImg"/>
+                                    </div> 
+                                </a>)
+                            }         
+                        </div>
+                        <h6 className="revSubHeder">Tests for third term</h6>
+                        <div className="firstTerm">
+                            {this.state.revision[0].Tterm.map((test)=>
+                                <a href="#/">
+                                    <div className="test">
+                                        <h6>Test 1</h6>
+                                        <img src={TestImg} alt="test paper" className="testImg"/>
+                                    </div> 
+                                </a>)
+                            }   
+                        </div>
+                        <h6 className="revSubHeder">Pass papers</h6>
+                        <div className="firstTerm">
+                            {this.state.revision[0].Fterm.map((test)=>
+                                <a href="#/">
+                                    <div className="test">
+                                        <h6>Test 1</h6>
+                                        <img src={TestImg} alt="test paper" className="testImg"/>
+                                    </div> 
+                                </a>)
+                            }       
+                        </div>
                     </div>
                 </div>
             </Layout>
