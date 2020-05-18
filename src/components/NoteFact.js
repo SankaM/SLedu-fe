@@ -7,23 +7,23 @@ const NoteFact=(props)=>{
     return(
         <Aux>
             <div className="mainDefSec">
-                <h5 className="MainTopic">{props.NoteDetails.topic}</h5>
+                <h5 className="MainTopic">{props.NoteDetails.subTopicName}</h5>
                 <div className="mainDef">
                     <h4 className="defHed">Definition</h4>
                     <div className="mainDefImgSec">
-                        <img src={props.NoteDetails.ImgForDefUrl} alt="Main Definition"  className="MainDefImg"/>
+                        <img src={props.NoteDetails.imageDefUrl} alt="Main Definition"  className="MainDefImg"/>
                     </div>
-                    <p className="defPara">{props.NoteDetails.Definition
+                    <p className="defPara">{props.NoteDetails.definition
                     }</p>
                 </div>
                 <div className="thoerySec">
                     <h5 className="defHed">Theorem</h5>
                     <div className="row">
                         <div className="col-8 thoery">
-                            {props.NoteDetails.Theory}
+                            {props.NoteDetails.theory}
                         </div>
                         <div className="col-4 thorryImgSec">
-                            <img src={props.NoteDetails.ImgForTheoeyUrl} className="theoryImg" alt="for theory"/>
+                            <img src={props.NoteDetails.imageTheoryUrl} className="theoryImg" alt="for theory"/>
                         </div>   
                     </div>
                 </div>
@@ -34,10 +34,10 @@ const NoteFact=(props)=>{
                     <h5 className="defHed">Example</h5>
                         <div className="row">
                             <div className="col-4 thorryImgSec">
-                                <img src={props.NoteDetails.ImgForExampleUrl} className="theoryImg" alt="for theory"/>
+                                <img src={props.NoteDetails.imageExampleUrl} className="theoryImg" alt="for theory"/>
                             </div> 
                             <div className="col-8 Exmple">
-                                {props.NoteDetails.Example}
+                                {props.NoteDetails.example}
                             </div>
                         </div>
                 </div>

@@ -19,31 +19,31 @@ class TestQcard extends Component {
     //     })
     // }
     
-//    componentWillReceiveProps(nextProps){
-//         this.refs.answer1.checked = false;
-//         this.refs.answer2.checked = false;
-//         this.refs.answer3.checked = false;
-//         this.refs.answer4.checked = false;
-//         this.suffleAnswer(nextProps.Quations[0].otherAnswers);
-//         this.setState({
-//             UserAnswer:null
-//         })
-//    }
-//     suffleAnswer=(arry)=>{
-//         let AnsArry = arry;
-//         let i = AnsArry.length -1;
+   componentWillReceiveProps(nextProps){
+        this.refs.answer1.checked = false;
+        this.refs.answer2.checked = true;
+        this.refs.answer3.checked = false;
+        this.refs.answer4.checked = false;
+        this.suffleAnswer(nextProps.Quations[0].otherAnswers);
+        this.setState({
+            UserAnswer:null
+        })
+   }
+    suffleAnswer=(arry)=>{
+        let AnsArry = arry;
+        let i = AnsArry.length -1;
         
-//         for(i; i > 0 ; i--){
-//             const j = Math.floor(Math.random() * (i + 1));
-//             const temp = AnsArry[i];
-//             AnsArry[i] =  AnsArry[j];
-//             AnsArry[j] = temp;
-//         }
+        for(i; i > 0 ; i--){
+            const j = Math.floor(Math.random() * (i + 1));
+            const temp = AnsArry[i];
+            AnsArry[i] =  AnsArry[j];
+            AnsArry[j] = temp;
+        }
         
-//         this.setState({
-//             answers : AnsArry
-//         })
-//     }
+        this.setState({
+            answers : AnsArry
+        })
+    }
 
     // submitAnswer=()=>{
     //     if(this.state.UserAnswer=== null){

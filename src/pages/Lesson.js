@@ -145,7 +145,7 @@ class _5maths extends Component {
                     </div>
                     <div className="col-3 revSec">
                         <h4 className="revHeder">Revision</h4>
-                        <h6 className="revSubHeder">Tests for first term</h6>
+                        <h6 className="revSubHeder">First term</h6>
                         <div className="firstTerm">
                             {this.state.revision[0].Fterm.map((test)=>
                                 <a href={"/Test/"+test.TestId}>
@@ -156,7 +156,7 @@ class _5maths extends Component {
                                 </a>)
                             }
                         </div>
-                        <h6 className="revSubHeder">Tests for second term</h6>
+                        <h6 className="revSubHeder">Second term</h6>
                         <div className="firstTerm">
                             {this.state.revision[0].Sterm.map((test)=>
                                 <a href={"/Test/"+test.TestId}>
@@ -167,7 +167,7 @@ class _5maths extends Component {
                                 </a>)
                             }         
                         </div>
-                        <h6 className="revSubHeder">Tests for third term</h6>
+                        <h6 className="revSubHeder">Third term</h6>
                         <div className="firstTerm">
                             {this.state.revision[0].Tterm.map((test)=>
                                 <a href={"/Test/"+test.TestId}>

@@ -11,82 +11,23 @@ class Note extends Component{
         super(props);
         this.state ={
             show:false,
-            content:[
-                {
-                    mainTopicId:1,
-                    mainTopicName:"පරිමිතිය යනු 1",
-                    subTop:[
-                        {
-                            subTopicId:1_1,
-                            subTopicName:"සමචතුරස්රයක පරිමිතිය1"
-                        },
-                        {
-                            subTopicId:1_2,
-                            subTopicName:"සමචතුරස්රයක පරිමිතිය2"
-                        }
-                    ]
-                },
-                {
-                    mainTopicId:2,
-                    mainTopicName:"පරිමිතිය යනු 2",
-                    subTop:[]
-                },
-                {
-                    mainTopicId:3,
-                    mainTopicName:"පරිමිතිය යනු 3",
-                    subTop:[
-                        {
-                            subTopicId:3_1,
-                            subTopicName:"සමචතුරස්රයක පරිමිතිය"
-                        },
-                        {
-                            subTopicId:3_2,
-                            subTopicName:"සමචතුරස්රයක පරිමිතිය"
-                        }
-                    ]
-                }
-            ],
-            Note : [
-                {
-                    topicId:1,
-                    subTopicId:1_1,
-                    topic:"පරිමිතිය යනු 1",
-                    subTopicName:"සමචතුරස්රයක පරිමිතිය ",
-                    ImgForDefUrl:"https://sl-edu.s3-ap-southeast-1.amazonaws.com/cover-images/_5parimithiya.png",
-                    Definition:"පරිමිතිය යනු යම්කිසි තල රුපයක් වටා මුළු දිග ප්‍රමාණය වේ",
-                    Theory:" a theorem attributed to Pythagoras that the square on the hypotenuse of a      right-angled triangle is equal in area to the sum of the squares on the other two sides.",
-                    ImgForTheoeyUrl:"https://sl-edu.s3-ap-southeast-1.amazonaws.com/cover-images/fraction.png",
-                    Example:" Start with:	a2 + b2 = c2 , Put in what we know:	52 + 122 = c2,Calculate squares:	25 + 144 = c2,25+144=169:	169 = c2,Swap sides:	c2 = 169,Square root of both sides:	c = √169,Calculate:	c = 13,",
-                    ImgForExampleUrl:"https://sl-edu.s3-ap-southeast-1.amazonaws.com/cover-images/fraction.png"
-                },
-                {
-                    topicId:1,
-                    subTopicId:1_2,
-                    topic:"පරිමිතිය යනු 2",
-                    subTopicName:"සමචතුරස්රයක පරිමිතිය ",
-                    ImgForDefUrl:"https://sl-edu.s3-ap-southeast-1.amazonaws.com/cover-images/_5parimithiya.png",
-                    Definition:"පරිමිතිය යනු යම්කිසි තල රුපයක් වටා මුළු දිග ප්‍රමාණය වේ",
-                    Theory:" a theorem attributed to Pythagoras that the square on the hypotenuse of a      right-angled triangle is equal in area to the sum of the squares on the other two sides.",
-                    ImgForTheoeyUrl:"https://sl-edu.s3-ap-southeast-1.amazonaws.com/cover-images/fraction.png",
-                    Example:" Start with:	a2 + b2 = c2 , Put in what we know:	52 + 122 = c2,Calculate squares:	25 + 144 = c2,25+144=169:	169 = c2,Swap sides:	c2 = 169,Square root of both sides:	c = √169,Calculate:	c = 13,",
-                    ImgForExampleUrl:"https://sl-edu.s3-ap-southeast-1.amazonaws.com/cover-images/fraction.png"
-                },
-                {
-                    topicId:2,
-                    subTopicId:2_1,
-                    topic:"පරිමිතිය යනු 3",
-                    subTopicName:"සමචතුරස්රයක පරිමිතිය ",
-                    ImgForDefUrl:"https://sl-edu.s3-ap-southeast-1.amazonaws.com/cover-images/_5parimithiya.png",
-                    Definition:"පරිමිතිය යනු යම්කිසි තල රුපයක් වටා මුළු දිග ප්‍රමාණය වේ",
-                    Theory:" a theorem attributed to Pythagoras that the square on the hypotenuse of a      right-angled triangle is equal in area to the sum of the squares on the other two sides.",
-                    ImgForTheoeyUrl:"https://sl-edu.s3-ap-southeast-1.amazonaws.com/cover-images/fraction.png",
-                    Example:" Start with:	a2 + b2 = c2 , Put in what we know:	52 + 122 = c2,Calculate squares:	25 + 144 = c2,25+144=169:	169 = c2,Swap sides:	c2 = 169,Square root of both sides:	c = √169,Calculate:	c = 13,",
-                    ImgForExampleUrl:"https://sl-edu.s3-ap-southeast-1.amazonaws.com/cover-images/fraction.png"
-                }
-            ],
+            content:[],
+            Note : [],
             Remember:["සමචතුරස්රයක පරිමිතිය = පැත්තක දිග x 4","සමචතුරස්රයක පරිමිතිය = පැත්තක දිග x 5","සමචතුරස්රයක පරිමිතිය = පැත්තක දිග x 6","සමචතුරස්රයක පරිමිතිය = පැත්තක දිග x 7","සමචතුරස්රයක පරිමිතිය = පැත්තක දිග x 8","සමචතුරස්රයක පරිමිතිය = පැත්තක දිග x 9","සමචතුරස්රයක පරිමිතිය = පැත්තක දිග x 10"],
             referanceVideo:["74kuKshEBvg","zRdPDSYacNs","yDNAHuyJJQI"]
         }
+    }
+
+    componentDidMount(){
+        this.getContentAndDefaultNote(this.props.match.params.id);
+    }
+    getContentAndDefaultNote=(id)=>{
+        fetch('http://ec2-18-140-3-78.ap-southeast-1.compute.amazonaws.com:3005/v1/tutor/topics?lessonId='+id).then(res=>res.json()).then((Response)=>
+            this.setState({
+                content:Response.topics,
+                Note:Response.defaultSmartNote
+            })
+        )
     }
     HadleContent=(event)=>{
         let temp = event.target.nextSibling.nextSibling
@@ -108,10 +49,10 @@ class Note extends Component{
                         <h1 className="NoteHed">Smart Note</h1>
                         <div className="row">
                             <div className="col-3">
-                                <div className="containSec">
+                                {this.state.content?(<div className="containSec">
                                     <h5 className="remHed">contents</h5>
                                    {this.state.content.map((cont)=>{
-                                        if(cont.subTop.length === 0){
+                                        if(cont.subTopicList.length === 0){
                                            return (
                                                <div className="content_link_sec">
                                                     <a href="#/" className="content_link">{cont.mainTopicName}</a>
@@ -123,11 +64,11 @@ class Note extends Component{
                                                 <div className="content_link_sec">
                                                     <a href="#/" className="content_link"
                                                         onClick={(e)=>this.HadleContent(e)}
-                                                    >{cont.mainTopicName}</a><span className="arrowImgSpan"><img src={Darrow}
+                                                    >{cont.topicName}</a><span className="arrowImgSpan"><img src={Darrow}
                                                     alt="dawn Arrow" className="Darrow"/></span>
                                                     <div className="subTopSec">
                                                         <ul>
-                                                            {cont.subTop.map((sTop)=>{
+                                                            {cont.subTopicList.map((sTop)=>{
                                                                 return(
                                                                     <li>
                                                                         <a className="subToplink"
@@ -143,7 +84,7 @@ class Note extends Component{
                                                 </div>
                                            )
                                    })}
-                                </div>
+                                </div>):null}
                                 <div className="rememberSec">
                                     <h5 className="remHed">Remember</h5>
                                     {
@@ -153,7 +94,7 @@ class Note extends Component{
                             </div>
                             <div className="col-7">
                                 {
-                                    this.state.Note.map((note)=><NoteFact NoteDetails={note}/>)
+                                    <NoteFact NoteDetails={this.state.Note}/>
                                 }
                             </div>
                             <div className="col-2">
