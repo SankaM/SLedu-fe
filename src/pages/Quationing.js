@@ -73,7 +73,6 @@ class Examing extends Component {
                 <Layout>
                     <div>
                         <h6 className="root">Grade 5 / ganithaya / Parimithiya</h6>
-                 
                             {<Qcard Quations={currentQuation} 
                             paginateAnswer={this.paginate} getReslt={this.markGanarator} getCorection={this.setcorrection}/>} 
                     </div>

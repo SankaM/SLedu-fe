@@ -1,0 +1,8 @@
+.TestRow{
+    background-color: rgb(4, 6, 31);
+    height: 100vh;
+}
+.paginationSec{
+    margin: 10px auto;
+    text-align: center;
+}

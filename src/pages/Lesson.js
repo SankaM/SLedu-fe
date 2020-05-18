@@ -140,15 +140,15 @@ class _5maths extends Component {
                     <div className="col-2 sideMapSec">
                         {<SideMap Subject={this.state.subject} getLesson={this.getLesson}/>}
                     </div>
-                    <div className="col-8">
+                    <div className="col-7">
                         {contain}
                     </div>
-                    <div className="col-2 revSec">
+                    <div className="col-3 revSec">
                         <h4 className="revHeder">Revision</h4>
                         <h6 className="revSubHeder">Tests for first term</h6>
                         <div className="firstTerm">
                             {this.state.revision[0].Fterm.map((test)=>
-                                <a href="#/">
+                                <a href={"/Test/"+test.TestId}>
                                     <div className="test">
                                         <h6>Test 1</h6>
                                         <img src={TestImg} alt="test paper" className="testImg"/>
@@ -159,7 +159,7 @@ class _5maths extends Component {
                         <h6 className="revSubHeder">Tests for second term</h6>
                         <div className="firstTerm">
                             {this.state.revision[0].Sterm.map((test)=>
-                                <a href="#/">
+                                <a href={"/Test/"+test.TestId}>
                                     <div className="test">
                                         <h6>Test 1</h6>
                                         <img src={TestImg} alt="test paper" className="testImg"/>
@@ -170,7 +170,7 @@ class _5maths extends Component {
                         <h6 className="revSubHeder">Tests for third term</h6>
                         <div className="firstTerm">
                             {this.state.revision[0].Tterm.map((test)=>
-                                <a href="#/">
+                                <a href={"/Test/"+test.TestId}>
                                     <div className="test">
                                         <h6>Test 1</h6>
                                         <img src={TestImg} alt="test paper" className="testImg"/>
@@ -181,7 +181,7 @@ class _5maths extends Component {
                         <h6 className="revSubHeder">Pass papers</h6>
                         <div className="firstTerm">
                             {this.state.revision[0].Fterm.map((test)=>
-                                <a href="#/">
+                                <a href={"/Test/"+test.TestId}>
                                     <div className="test">
                                         <h6>Test 1</h6>
                                         <img src={TestImg} alt="test paper" className="testImg"/>
