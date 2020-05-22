@@ -8,7 +8,7 @@ const Pagination=(props)=>{
     return(
         <div>
             {pageNumber.map(number=>
-                <a onClick={()=>(props.paginate(number))} href="#/" className="pagelink">
+                <a onClick={()=>(props.paginate(number))} href="#/" className="pagelink" key={number}>
                     <div className="page_item">
                         {number}
                     </div>

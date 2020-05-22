@@ -97,4 +97,60 @@
     color: rgb(6, 8, 48);
     margin-left: 8px;
 }
+.timeSec{
+    position: relative;
+    color: white;
+}
+#TimeOverlay{
+    position: absolute;
+    padding-top: 120px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1;
+    opacity: 0.95;
+    color: white;
+    text-align: center;
+}
+.startBtn{
+    background-color: red;
+    padding: 5px 20px;
+    border: 2px solid rgb(134, 3, 3);
+    color: #fff;
+    font-family: monospace;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+.clockSec{
+    text-align: center;
+    border: 2px solid #E1EDA0;
+    margin-top: 15px ;
+}
+.clockItem{
+    width: 50px;
+    display: inline-block;
+    border: 3px solid #E1EDA0;
+    margin: 5px 2px;
+}
+.clId{
+    font-size: 12px;
+    color: black;
+    background-color: #E1EDA0;
+}
+#EndOverlay{
+    display: none;
+    position: absolute;
+    padding-top: 120px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1;
+    opacity: 0.95;
+    color: white;
+    text-align: center;
 
+}

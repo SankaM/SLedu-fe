@@ -47,15 +47,34 @@ class Test extends Component {
     }
 
     componentDidMount(){
-        this.setResult(this.state.TestQuestion)
+        this.setResult(this.state.TestQuestion);
+        this.changeAnswers(this.state.TestQuestion);
     }
+
+ 
+    changeAnswers=(questionSet)=>{
+        questionSet.forEach((el)=>{
+            let AnsArry = el.otherAnswers;
+            let i = AnsArry.length -1;
+        
+            for(i; i > 0 ; i--){
+                const j = Math.floor(Math.random() * (i + 1));
+                const temp = AnsArry[i];
+                AnsArry[i] =  AnsArry[j];
+                AnsArry[j] = temp;
+            }
+            el.otherAnswers = AnsArry
+        })
+        this.setState({TestQuestion:questionSet})
+    }
+ 
     setResult=(questionArry)=>{
         let res = this.state.Result;
         questionArry.forEach(element => {
             res.push({QId:element.id,Canswer:element.correctAnswer,Uanswers:null})
         });
         this.setState({Result:res});
-        console.log(this.state.Result);
+        // console.log(this.state.Result);
     }
 
     UpdateResult=(id,Uans)=>{
@@ -66,29 +85,6 @@ class Test extends Component {
             }
         }
         this.setState({Result:res});
-        console.log(this.state.Result);
-    }
-
-    markGanarator=(corr,wro)=>{
-        let mark = (corr/(corr+wro) * 100).toFixed(1);
-        this.setState({
-            corrAns:corr,
-            wronAns:wro,
-            mark:mark
-        })
-    }
-
-    paginate=()=>{
-        let i = this.state.currentPage;
-        if(this.state.currentPage === this.state.TestQuestion.length){
-            // this.setState({
-            //     resultModel:true
-            // })
-        }
-        else{
-            i++;
-            this.setState({currentPage:i})
-        }
     }
     render() { 
         const indexOfLastQuation = this.state.currentPage * this.state.quationPerPage;
@@ -99,7 +95,7 @@ class Test extends Component {
                 <Layout>
                     <div className="TestRow">
                         <TestQcard Quations={currentQuation} 
-                        paginateAnswer={this.paginate} getReslt={this.markGanarator} getCorection={this.setcorrection} UpdateResult={this.UpdateResult}/>
+                        paginateAnswer={this.paginate} getReslt={this.markGanarator} getCorection={this.setcorrection} UpdateResult={this.UpdateResult} Result={this.state.Result}/>
                         <div className="col-8 paginationSec">
                             <Pagination Tquestion={this.state.TestQuestion.length} paginate={paginate}/>                    
                         </div>

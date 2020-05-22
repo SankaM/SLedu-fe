@@ -10,100 +10,90 @@ class TestQcard extends Component {
             answers:this.props.Quations[0].otherAnswers,
             UserAnswer: null,
             correct:0,
-            wrong:0
+            wrong:0,
+            h:0,
+            m:0,
+            s:0,
+            timeRun:0,
+            clockFun:()=>{}
         }
     }
-    // componentDidMount(){
-    //     this.setState({
-    //         answers:this.props.Quations[0].otherAnswers,
-    //     })
-    // }
-    
+    run=()=>{
+        var updateH = this.state.h,updateM = this.state.m,updateS = this.state.s;
+        var timeRun = this.state.timeRun;
+        timeRun +=1;
+        this.setState({timeRun:timeRun})
+        document.getElementById("TimeOverlay").style.display = "none";
+        if(timeRun >= 30){
+            document.getElementById("EndOverlay").style.display = "block";
+            clearInterval(this.state.clockFun);
+        }else{
+            if(updateM === 60){
+                updateH++;
+                updateM = 0;
+            }
+            if(updateS === 60){
+                updateM++;
+                updateS = 0
+            }
+            updateS++;
+            this.setState({
+                h:updateH,
+                m:updateM,
+                s:updateS
+            })
+        }
+    }
+    start=()=>{
+        this.run();
+        this.setState({clockFun:setInterval(this.run,1000)})
+    }
    componentWillReceiveProps(nextProps){
-        this.refs.answer1.checked = false;
-        this.refs.answer2.checked = true;
-        this.refs.answer3.checked = false;
-        this.refs.answer4.checked = false;
-        this.suffleAnswer(nextProps.Quations[0].otherAnswers);
         this.setState({
-            UserAnswer:null
-        })
-   }
-    suffleAnswer=(arry)=>{
-        let AnsArry = arry;
-        let i = AnsArry.length -1;
-        
-        for(i; i > 0 ; i--){
-            const j = Math.floor(Math.random() * (i + 1));
-            const temp = AnsArry[i];
-            AnsArry[i] =  AnsArry[j];
-            AnsArry[j] = temp;
+            answers:nextProps.Quations[0].otherAnswers
+        });
+        var answer = nextProps.Result.find(item=>item.QId === this.props.Quations[0].id)
+        if(answer.Uanswers === this.refs.answer1.value){
+            this.refs.answer1.checked = true;
+            this.refs.answer2.checked = false;
+            this.refs.answer3.checked = false;
+            this.refs.answer4.checked = false;
         }
-        
-        this.setState({
-            answers : AnsArry
-        })
-    }
-
-    // submitAnswer=()=>{
-    //     if(this.state.UserAnswer=== null){
-    //         swal({
-    //             title: "You did not select any answer",
-    //             text: "Please select the answer",
-    //             icon: "warning",
-    //             closeOnClickOutside: false,
-    //             button: "Ok",
-    //           })
-    //     }
-    //     else
-    //     {
-    //         if(this.state.UserAnswer === this.props.Quations[0].correctAnswer)
-    //         {
-    //             swal({
-    //                 title: "Yes ! It's correct",
-    //                 text: "Very good,Keep going",
-    //                 icon: "success",
-    //                 closeOnClickOutside: false,
-    //                 button: "Go Ahead",
-    //               }).then(()=>{
-    //                 this.props.paginateAnswer();
-    //                 this.props.getReslt(this.state.correct,this.state.wrong);
-    //               });
-                
-    //             let corr = this.state.correct;
-    //             corr++;
-    //             this.setState({
-    //                 correct:corr
-    //             })
-    //         }
-    //         else 
-    //         {
-    //             swal({
-    //                 title: "Oh! It's wrong",
-    //                 text: "It's ok,Keep going",
-    //                 icon: "error",
-    //                 button: "Go Ahead",
-    //                 closeOnClickOutside: false,
-    //             }).then(()=>{
-    //                 this.props.paginateAnswer();
-    //                 this.props.getReslt(this.state.correct,this.state.wrong);
-    //             })
-    //             let wro = this.state.wrong;
-    //             wro++;
-    //             this.setState({
-    //                 wrong:wro
-    //             })
-    //         }
-    //     }
-    //     this.props.getCorection(this.props.Quations[0].id,this.state.UserAnswer)
-    // }
-
+        else if(answer.Uanswers === this.refs.answer2.value){
+            this.refs.answer2.checked = true;
+            this.refs.answer1.checked = false;
+            this.refs.answer3.checked = false;
+            this.refs.answer4.checked = false;
+        }
+        else if(answer.Uanswers === this.refs.answer3.value){
+            this.refs.answer3.checked = true;
+            this.refs.answer1.checked = false;
+            this.refs.answer2.checked = false;
+            this.refs.answer4.checked = false;
+        }
+        else if(answer.Uanswers === this.refs.answer4.value){
+            this.refs.answer4.checked = true;
+            this.refs.answer1.checked = false;
+            this.refs.answer2.checked = false;
+            this.refs.answer3.checked = false;
+        }
+        else{
+            this.refs.answer1.checked = false;
+            this.refs.answer2.checked = false;
+            this.refs.answer3.checked = false;
+            this.refs.answer4.checked = false;
+        }
+   }
+    
     ckeckBoxHandlerOne=()=>{
         this.refs.answer2.checked = false;
         this.refs.answer3.checked = false;
         this.refs.answer4.checked = false;
         if(this.refs.answer1.checked){
             this.props.UpdateResult(this.props.Quations[0].id,this.refs.answer1.value);
+        }
+        else{
+            this.props.UpdateResult(this.props.Quations[0].id,null);
         }
     }
     ckeckBoxHandlerTwo=()=>{
@@ -113,6 +103,9 @@ class TestQcard extends Component {
         if(this.refs.answer2.checked){
             this.props.UpdateResult(this.props.Quations[0].id,this.refs.answer2.value);
         }
+        else{
+            this.props.UpdateResult(this.props.Quations[0].id,null);
+        }
     }
     ckeckBoxHandlerThree=()=>{
         this.refs.answer1.checked = false;
@@ -120,6 +113,9 @@ class TestQcard extends Component {
         this.refs.answer4.checked = false;
         if(this.refs.answer3.checked){
             this.props.UpdateResult(this.props.Quations[0].id,this.refs.answer3.value);
+        }
+        else{
+            this.props.UpdateResult(this.props.Quations[0].id,null);
         }
     }
     ckeckBoxHandlerFour=()=>{
@@ -129,14 +125,43 @@ class TestQcard extends Component {
         if(this.refs.answer4.checked){
             this.props.UpdateResult(this.props.Quations[0].id,this.refs.answer4.value);
         }
+        else{
+            this.props.UpdateResult(this.props.Quations[0].id,null);
+        }
     }
    
     render() { 
         return ( 
             <Aux>
+            <div id="TimeOverlay">
+                <h1>Test No 1</h1>
+                <h3>There are have 30 questions </h3>
+                <h3>You have 30 minite to compleate this test</h3>
+                <button onClick={()=>{this.start()}} className="startBtn">Start</button>
+            </div>
+            <div id="EndOverlay">
+                <h1>Time is over</h1>
+                <button onClick={()=>{}} className="startBtn">Go to Explanation</button>
+            </div>
             <div>
                 <div className="MyRow">
-                    <div className="col-2">
+                    <div className="col-2 timeSec">
+                        <div className="clockSec">
+                            <div className="clockItem">
+                                <div className="clId">H</div>
+                                {this.state.h}
+                            </div>
+                            :
+                            <div className="clockItem">
+                                <div className="clId">M</div>
+                                {this.state.m}
+                            </div>
+                            :
+                            <div className="clockItem">
+                                <div className="clId">S</div>
+                                {this.state.s}
+                            </div>
+                        </div>
                     </div>
                     <div className="col-8">
                         <div className="Qcard pb-4">
