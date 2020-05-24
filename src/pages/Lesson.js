@@ -14,6 +14,7 @@ class _5maths extends Component {
             currentGrade:null,
             subject:[],
             Lessons:[],
+            LessonId:this.props.match.params.id,
             changed:true,
             data:this.props.location.state,
             revision:[
@@ -120,16 +121,67 @@ class _5maths extends Component {
                           </div>
             }
             else{
-                contain = <div>
-                            <h4 className="ConHead">Learn With Quations</h4>
-                            {  
-                                this.state.Lessons.map((les)=>
-                                    <Link to={"/Note/"+les.id} key={les.id}>
-                                        <Lcard lesson={les.name} ImgSrc={les.imageUrl}/>
-                                    </Link>
-                                )  
-                            }
+                contain = 
+                            <div className="row">
+                                    <div className="col-9">
+                                        <h4 className="ConHead">Learn With Quations</h4>
+                                        {  
+                                            this.state.Lessons.map((les)=>
+                                                <Link to={"/Note/"+les.id} key={les.id}>
+                                                    <Lcard lesson={les.name} ImgSrc={les.imageUrl}/>
+                                                </Link>
+                                            )  
+                                        }
+                                    </div>
+                                    <div className="col-3 revSec">
+                                    <h4 className="revHeder">Revision</h4>
+                                    <h6 className="revSubHeder">First term</h6>
+                                    <div className="firstTerm">
+                                        {this.state.revision[0].Fterm.map((test)=>
+                                            <a href={"/Test/" +this.state.LessonId+ "/"+test.TestId}>
+                                                <div className="test">
+                                                    <h6>Test 1</h6>
+                                                    <img src={TestImg} alt="test paper" className="testImg"/>
+                                                </div> 
+                                            </a>)
+                                        }
+                                    </div>
+                                    <h6 className="revSubHeder">Second term</h6>
+                                    <div className="firstTerm">
+                                        {this.state.revision[0].Sterm.map((test)=>
+                                            <a href={"/Test/" +this.state.LessonId+ "/"+test.TestId}>
+                                                <div className="test">
+                                                    <h6>Test 1</h6>
+                                                    <img src={TestImg} alt="test paper" className="testImg"/>
+                                                </div> 
+                                            </a>)
+                                        }         
+                                    </div>
+                                    <h6 className="revSubHeder">Third term</h6>
+                                    <div className="firstTerm">
+                                        {this.state.revision[0].Tterm.map((test)=>
+                                            <a href={"/Test/" +this.state.LessonId+ "/"+test.TestId}>
+                                                <div className="test">
+                                                    <h6>Test 1</h6>
+                                                    <img src={TestImg} alt="test paper" className="testImg"/>
+                                                </div> 
+                                            </a>)
+                                        }   
+                                    </div>
+                                    <h6 className="revSubHeder">Pass papers</h6>
+                                    <div className="firstTerm">
+                                        {this.state.revision[0].Fterm.map((test)=>
+                                            <a href={"/Test/" +this.state.LessonId+ "/"+test.TestId}>
+                                                <div className="test">
+                                                    <h6>Test 1</h6>
+                                                    <img src={TestImg} alt="test paper" className="testImg"/>
+                                                </div> 
+                                            </a>)
+                                        }       
+                                    </div>
+                                </div>
                             </div>
+                            
             }
         }
         
@@ -140,55 +192,8 @@ class _5maths extends Component {
                     <div className="col-2 sideMapSec">
                         {<SideMap Subject={this.state.subject} getLesson={this.getLesson}/>}
                     </div>
-                    <div className="col-7">
+                    <div className="col-10">
                         {contain}
-                    </div>
-                    <div className="col-3 revSec">
-                        <h4 className="revHeder">Revision</h4>
-                        <h6 className="revSubHeder">First term</h6>
-                        <div className="firstTerm">
-                            {this.state.revision[0].Fterm.map((test)=>
-                                <a href={"/Test/"+test.TestId}>
-                                    <div className="test">
-                                        <h6>Test 1</h6>
-                                        <img src={TestImg} alt="test paper" className="testImg"/>
-                                    </div> 
-                                </a>)
-                            }
-                        </div>
-                        <h6 className="revSubHeder">Second term</h6>
-                        <div className="firstTerm">
-                            {this.state.revision[0].Sterm.map((test)=>
-                                <a href={"/Test/"+test.TestId}>
-                                    <div className="test">
-                                        <h6>Test 1</h6>
-                                        <img src={TestImg} alt="test paper" className="testImg"/>
-                                    </div> 
-                                </a>)
-                            }         
-                        </div>
-                        <h6 className="revSubHeder">Third term</h6>
-                        <div className="firstTerm">
-                            {this.state.revision[0].Tterm.map((test)=>
-                                <a href={"/Test/"+test.TestId}>
-                                    <div className="test">
-                                        <h6>Test 1</h6>
-                                        <img src={TestImg} alt="test paper" className="testImg"/>
-                                    </div> 
-                                </a>)
-                            }   
-                        </div>
-                        <h6 className="revSubHeder">Pass papers</h6>
-                        <div className="firstTerm">
-                            {this.state.revision[0].Fterm.map((test)=>
-                                <a href={"/Test/"+test.TestId}>
-                                    <div className="test">
-                                        <h6>Test 1</h6>
-                                        <img src={TestImg} alt="test paper" className="testImg"/>
-                                    </div> 
-                                </a>)
-                            }       
-                        </div>
                     </div>
                 </div>
             </Layout>

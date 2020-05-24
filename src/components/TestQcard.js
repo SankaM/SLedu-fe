@@ -24,7 +24,7 @@ class TestQcard extends Component {
         timeRun +=1;
         this.setState({timeRun:timeRun})
         document.getElementById("TimeOverlay").style.display = "none";
-        if(timeRun >= 30){
+        if(timeRun >= 25){
             document.getElementById("EndOverlay").style.display = "block";
             clearInterval(this.state.clockFun);
         }else{
@@ -52,26 +52,26 @@ class TestQcard extends Component {
         this.setState({
             answers:nextProps.Quations[0].otherAnswers
         });
-        var answer = nextProps.Result.find(item=>item.QId === this.props.Quations[0].id)
-        if(answer.Uanswers === this.refs.answer1.value){
+        var answer = nextProps.Result.find(item=>item.id === this.props.Quations[0].id)
+        if(answer.Uanswer === this.refs.answer1.value){
             this.refs.answer1.checked = true;
             this.refs.answer2.checked = false;
             this.refs.answer3.checked = false;
             this.refs.answer4.checked = false;
         }
-        else if(answer.Uanswers === this.refs.answer2.value){
+        else if(answer.Uanswer === this.refs.answer2.value){
             this.refs.answer2.checked = true;
             this.refs.answer1.checked = false;
             this.refs.answer3.checked = false;
             this.refs.answer4.checked = false;
         }
-        else if(answer.Uanswers === this.refs.answer3.value){
+        else if(answer.Uanswer === this.refs.answer3.value){
             this.refs.answer3.checked = true;
             this.refs.answer1.checked = false;
             this.refs.answer2.checked = false;
             this.refs.answer4.checked = false;
         }
-        else if(answer.Uanswers === this.refs.answer4.value){
+        else if(answer.Uanswer === this.refs.answer4.value){
             this.refs.answer4.checked = true;
             this.refs.answer1.checked = false;
             this.refs.answer2.checked = false;
@@ -140,11 +140,11 @@ class TestQcard extends Component {
                 <button onClick={()=>{this.start()}} className="startBtn">Start</button>
             </div>
             <div id="EndOverlay">
-                <h1>Time is over</h1>
-                <button onClick={()=>{}} className="startBtn">Go to Explanation</button>
+                <h1>Your time is over</h1>
+                <button onClick={()=>{this.props.ExplFun();this.props.getMark();}} className="startBtn">Go to Explanation</button>
             </div>
             <div>
-                <div className="MyRow">
+                <div className="MyRowTest">
                     <div className="col-2 timeSec">
                         <div className="clockSec">
                             <div className="clockItem">

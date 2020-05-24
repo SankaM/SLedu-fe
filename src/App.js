@@ -15,7 +15,7 @@ class App extends Component {
           <Route exact path="/" component={Home}/>
           <Route exact path="/Lesson/:id" component={Lesson}/>
           <Route exact path="/Examing/:id" component={Examing}/>
-          <Route exact path="/Test/:id" component={Test}/>
+          <Route exact path="/Test/:id2/:id" component={Test}/>
           <Route exact path="/Note/:id" component={Note}/>
           <Route exact path="/404" component={PageNotFound}/>
           <Redirect to="/404"/>

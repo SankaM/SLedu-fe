@@ -3,6 +3,7 @@ import '../Style/Qreview.css';
 import Aux from './Wrap';
 import CorImg from '../CoverImgs/correct.png';
 import WroImg from '../CoverImgs/Wrong.png';
+import QuImg from '../CoverImgs/questionMark.png';
 
 const Qreview=(props)=>{
     let obj = props.Uanswer.find(obj=>obj.id===props.qDetails.id);
@@ -13,8 +14,14 @@ const Qreview=(props)=>{
         markImg = <img src={CorImg} alt="corr Img" className="markImg"/>
     }
     else{
-        markImg = <img src={WroImg} alt="Wrong Img" className="markImg"/>
-        wrongAnswer = <p className="QwAnswer"> Your Answer : <span className="answerRw">{obj.Uanswer}</span></p>
+        if(obj.Uanswer === null){
+            wrongAnswer = <p className="QwAnswer">You Not Answered</p>
+            markImg = <img src={QuImg} alt="Not answerd Img" className="markImg"/>
+        }
+        else{
+            markImg = <img src={WroImg} alt="Wrong Img" className="markImg"/>
+            wrongAnswer = <p className="QwAnswer"> Your Answer : <span className="answerRw">{obj.Uanswer}</span></p>
+        }
     }
     return(
         <Aux>
