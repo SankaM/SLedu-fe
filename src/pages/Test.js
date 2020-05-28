@@ -117,6 +117,11 @@ class Test extends Component {
             Mark:mark
         })
     }
+    paginateNest =()=>{
+        let curr = this.state.currentPage;
+        curr++;
+        this.setState({currentPage:curr})
+     }
     render() { 
         const indexOfLastQuation = this.state.currentPage * this.state.quationPerPage;
         const indexOfFirstQuation = indexOfLastQuation - this.state.quationPerPage;
@@ -130,6 +135,7 @@ class Test extends Component {
                         paginateAnswer={this.paginate} getReslt={this.markGanarator} getCorection={this.setcorrection} UpdateResult={this.UpdateResult} Result={this.state.Result}
                         ExplFun={TestExplanationHandler}
                         getMark={this.getMark}
+                        paginateNest={this.paginateNest}
                         />
                         <div className="col-8 paginationSec">
                             <Pagination Tquestion={this.state.TestQuestion.length} paginate={paginate}/>                    

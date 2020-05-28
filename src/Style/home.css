@@ -1,0 +1,116 @@
+#homeContainer{
+    display: flex;
+    height: 100%;
+    background-color: #faf5f5;
+}
+.leftCol{
+    flex: 25%;
+    max-width: 25%;
+    /* height: 100vh; */
+    /* background-color: red; */
+}
+.MidleCol{
+    flex: 50%;
+    max-width: 50%;
+    /* background-color: blue; */
+}
+.articalSec{
+    height: 100vh;
+    overflow-y: scroll;
+}
+.articalSec::-webkit-scrollbar{
+    display: none;
+}
+.RightCol{
+    flex: 25%;
+    max-width: 25%;
+    /* height: 100vh; */
+    /* background-color: red; */
+}
+.homeHader{
+    font-size: 25px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: monospace;
+    color: blue;
+    margin-bottom: 20px;
+}
+/* rigtht side css */
+.rihtSideHader{
+    font-size: 20px;
+    text-align: center;
+    font-family: monospace;
+    color: gray;
+    margin-top: 20px;
+}
+.topStuSec{
+    margin: 0 15px;
+    background-color: #ffffff;
+    height: 300px;
+    overflow-y: scroll;
+}
+.topStuSec::-webkit-scrollbar{
+    display: none;
+}
+.stuRankSecLink:hover{
+    text-decoration: none;
+}
+.stuRankSec{
+    /* background-color: salmon; */
+    padding: 3px 10px;
+    background-color: rgb(236, 225, 225);
+    margin: 2px 3px;
+}
+.rnkProfImg{
+    width: 30px;
+    height: 30px;
+    border: 1px solid #6767C5;
+    border-radius: 5px;
+}
+.rnkProfName{
+    margin-left: 20px;
+    font-size: 16px;
+    color: rgb(68, 67, 67);
+    font-weight: 500;
+}
+.rnk{
+    float: right;
+    margin-right: 20px;
+    color: blue;
+}
+.topArtSec{
+    margin: 0 15px;
+    background-color: #ffffff;
+    height: 300px;
+    overflow-y: scroll;
+}
+.topArtSec::-webkit-scrollbar{
+    display: none;
+}
+/* left css */
+.leftHader{
+    font-size: 20px;
+    text-align: center;
+    font-family: monospace;
+    color: gray;
+    margin-top: 20px;
+}
+.createSec{
+    background-color: #ffffff;
+    margin: 0 15px;
+}
+.creContTxt{
+    font-size: 16px;
+    color: rgb(112, 110, 110);
+    margin-left: 20px;
+}
+.creContent{
+    padding: 3px 10px;
+    margin: 2px 3px;
+}
+.creContent:hover{
+   background-color: rgb(236, 225, 225);;
+}
+.creContentLink:hover{
+    text-decoration: none;
+}

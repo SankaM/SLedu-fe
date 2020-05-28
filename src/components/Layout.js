@@ -4,7 +4,7 @@ import '../Style/Layout.css'
 import { Link } from 'react-router-dom';
 import {DropdownButton,Dropdown} from 'react-bootstrap';
 import HomeImg from '../CoverImgs/Home.png';
-
+// import axios from '../axios-getData'
 
 const Layout=(props)=>{
     const [grade,setGrade] = useState([]);
@@ -12,6 +12,10 @@ const Layout=(props)=>{
             fetch('http://ec2-18-140-3-78.ap-southeast-1.compute.amazonaws.com:3005/v1/tutor/grades?medium=si').then(res=>res.json()).then((response)=>{
                 setGrade(response);
             })
+            // axios.get('http://ec2-18-140-3-78.ap-southeast-1.compute.amazonaws.com:3005/v1/tutor/grades?medium=si').then(res=>res.json()).then((response)=>{
+            //     setGrade(response);
+            //     console.log(response)
+            // })
         },[]
     )
     const HadleClick=(event)=>{

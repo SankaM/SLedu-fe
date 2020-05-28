@@ -1,0 +1,92 @@
+.articalContainer{
+    background-color: #ffffff;
+    width: 99%;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+.articalFrom{
+    font-size: 18px;
+    font-family: sans-serif;
+    color: rgb(2, 2, 88);
+}
+.artiHAder{
+    text-align: center;
+}
+.articalFromSec{
+    margin: 5px 8px;
+    padding-top: 4px;
+}
+.articalprofImg{
+    width: 35px;
+    height: 35px;
+    margin-right: 5px;
+    border: 2px solid rgb(103, 103, 197);
+}
+.artImgSec{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+.column{
+    flex: 50%;
+    padding: 0 4px;
+}
+.artiImg{
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+}
+.interestSec{
+    display: flex;
+    border-top: solid 2px rgb(197, 194, 194);
+    border-bottom: solid 2px rgb(197, 194, 194);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+.likeComSec{
+    text-align: center;
+}
+.likeBtn{
+    width: 25px;
+}
+.NoOfLikeCom{
+    text-align: center;
+    color: gray;
+    padding: 10px 0;
+}
+.viewComSec{
+    padding-bottom: 10px;
+}
+.comInput{
+    display: block;
+    width: 95%;
+    margin: 0 auto;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.vieComBtn{
+    float: right;
+    margin:5px 20px;
+    color: gray;
+}
+.vieComBtn:hover{
+   text-decoration: none;
+}
+.artiIntrduct{
+    font-size: 16px;
+    padding: 0 10px;
+}
+.artiMore{
+    font-size: 16px;
+    padding: 0 10px;
+}
