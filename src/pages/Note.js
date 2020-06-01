@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Layout from '../components/Layout';
-import NoteFact from '../components/NoteFact'
+import NoteFact from '../components/NoteFact';
+import Url from '../Url';
 import '../Style/Note.css';
 import VideoModel from '../components/VideoModel';
 import Darrow from '../CoverImgs/arrow.png'
@@ -22,7 +23,7 @@ class Note extends Component{
         this.getContentAndDefaultNote(this.props.match.params.id);
     }
     getContentAndDefaultNote=(id)=>{
-        fetch('http://ec2-18-140-3-78.ap-southeast-1.compute.amazonaws.com:3005/v1/tutor/topics?lessonId='+id).then(res=>res.json()).then((Response)=>
+        fetch( Url+'/v1/tutor/topics?lessonId='+id).then(res=>res.json()).then((Response)=>
             this.setState({
                 content:Response.topics,
                 Note:Response.defaultSmartNote
@@ -38,6 +39,18 @@ class Note extends Component{
         else{
             temp.style.display = "block"
         }
+    }
+    getNoteHandler=(SubId,Id)=>{
+         var lesId = this.props.match.params.id;
+        fetch(Url+'/v1/tutor/smartnote/'+lesId+'/'+Id+'/'+SubId).then(res=>
+                // console.log(res.body)
+                res.json()
+        )
+        .then((response)=>{
+            this.setState({
+                Note:response
+            })
+        }).catch(error=>console.log("Error is :", error))
     }
     render(){
         const{VidId}= this.state;
@@ -55,7 +68,7 @@ class Note extends Component{
                                         if(cont.subTopicList.length === 0){
                                            return (
                                                <div className="content_link_sec">
-                                                    <a href="#/" className="content_link">{cont.mainTopicName}</a>
+                                                    <a href="#/" className="content_link" onClick={()=>this.getNoteHandler}>{cont.mainTopicName}</a>
                                                </div>
                                            )
                                        }
@@ -70,9 +83,10 @@ class Note extends Component{
                                                         <ul>
                                                             {cont.subTopicList.map((sTop)=>{
                                                                 return(
-                                                                    <li>
+                                                                    <li key={sTop.subTopicId}>
                                                                         <a className="subToplink"
                                                                             href="#/"
+                                                                            onClick={()=>this.getNoteHandler(sTop.subTopicId,sTop.topicId)}
                                                                         >
                                                                             {sTop.subTopicName}
                                                                         </a>

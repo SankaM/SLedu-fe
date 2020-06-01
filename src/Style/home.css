@@ -58,7 +58,7 @@
 .stuRankSec{
     /* background-color: salmon; */
     padding: 3px 10px;
-    background-color: rgb(236, 225, 225);
+    background-color: rgb(247, 241, 241);
     margin: 2px 3px;
 }
 .rnkProfImg{
@@ -98,6 +98,7 @@
 .createSec{
     background-color: #ffffff;
     margin: 0 15px;
+    padding: 1px 0;
 }
 .creContTxt{
     font-size: 16px;
@@ -107,6 +108,7 @@
 .creContent{
     padding: 3px 10px;
     margin: 2px 3px;
+    background-color: rgb(247, 241, 241);
 }
 .creContent:hover{
    background-color: rgb(236, 225, 225);;

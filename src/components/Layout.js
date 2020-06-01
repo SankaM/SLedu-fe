@@ -4,18 +4,18 @@ import '../Style/Layout.css'
 import { Link } from 'react-router-dom';
 import {DropdownButton,Dropdown} from 'react-bootstrap';
 import HomeImg from '../CoverImgs/Home.png';
-// import axios from '../axios-getData'
+import Url from '../Url';
+import RegisterSModal from '../components/RegisterStudent';
+import RegisterTModal from '../components/RegisterTeacher';
 
 const Layout=(props)=>{
     const [grade,setGrade] = useState([]);
+    const [registerSModel,setRegisterSModel] = useState(false);
+    const [registerTModel,setRegisterTModel] = useState(false);
     useEffect(()=>{
-            fetch('http://ec2-18-140-3-78.ap-southeast-1.compute.amazonaws.com:3005/v1/tutor/grades?medium=si').then(res=>res.json()).then((response)=>{
+            fetch(Url+'/v1/tutor/grades?medium=si').then(res=>res.json()).then((response)=>{
                 setGrade(response);
             })
-            // axios.get('http://ec2-18-140-3-78.ap-southeast-1.compute.amazonaws.com:3005/v1/tutor/grades?medium=si').then(res=>res.json()).then((response)=>{
-            //     setGrade(response);
-            //     console.log(response)
-            // })
         },[]
     )
     const HadleClick=(event)=>{
@@ -27,6 +27,8 @@ const Layout=(props)=>{
         event.target.style.background = 'rgb(48, 180, 180)';
         event.target.style.color= "#120136"
     }
+    const onHideSM=()=>setRegisterSModel(false);
+    const onHideTM=()=>setRegisterTModel(false);
     return(
         <Aux>
             <div className="myContainer">
@@ -38,8 +40,10 @@ const Layout=(props)=>{
                         <div className="col-10">
                             <Link to="/_5maths" className="navBtn signBtn">Sign In</Link>
                             <DropdownButton id="dropdown-basic-button" title="Register" className="navBtn">
-                                <Dropdown.Item href="#/action-2">As a Teacher</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">As a Student</Dropdown.Item>
+                                <Dropdown.Item href="#/action-1" onClick={()=>setRegisterSModel(true)}>As a Student</Dropdown.Item>
+                                <Dropdown.Item href="#/action-2"
+                                onClick={()=>setRegisterTModel(true)}
+                                >As a Teacher</Dropdown.Item>
                             </DropdownButton>
                         </div>
                     </div>
@@ -60,6 +64,8 @@ const Layout=(props)=>{
                     {props.children}
                 </main>
             </div>
+            <RegisterSModal show={registerSModel} hide={onHideSM}/>
+            <RegisterTModal show={registerTModel} hide={onHideTM}/>
         </Aux>
     );
 }
