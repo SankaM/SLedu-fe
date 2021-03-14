@@ -15,6 +15,22 @@
     margin-left:15px;
     padding-top: 10px;
 }
+.lanBtn{
+    color: #fff;
+    border: 1px solid #0062CC;
+}
+.lanSelOp{
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
 .navBtn{
     float: right;
     background: #451622;
@@ -49,7 +65,7 @@
 .gradetbl{
     display: table;
 }
-.gradeBtn{
+#gradetbl a{
     font-size: 20px;
     padding: 3px 15px;
     margin: auto 0;
@@ -59,12 +75,21 @@
     display: table-cell;
     height: 40px;
 }
-.gradeBtn:hover{
+#gradetbl a:hover{
+    text-decoration: none;
+    background-color: rgb(58, 204, 204);
+    color: rgb(83, 5, 5);
+}
+#gradetbl a:active,#gradetbl a.active{
     text-decoration: none;
     background-color: rgb(48, 180, 180);
     color: rgb(83, 5, 5);
 }
-
+.gradetbl a:active{
+    text-decoration: none;
+    background-color: rgb(104, 230, 104);
+    color: rgb(83, 5, 5);
+}
 #homeLogo{
     width: 30px;
 }

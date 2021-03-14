@@ -24,7 +24,7 @@ class TestQcard extends Component {
         timeRun +=1;
         this.setState({timeRun:timeRun})
         document.getElementById("TimeOverlay").style.display = "none";
-        if(timeRun >= 45){
+        if(timeRun >= 30){
             document.getElementById("EndOverlay").style.display = "block";
             clearInterval(this.state.clockFun);
         }else{

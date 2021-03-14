@@ -116,7 +116,7 @@ class RegisterModel extends Component{
                     </Form>
                     <div className="row">
                         <div className="col-6 center">
-                            <button className="btn btn-dark" onClick={this.props.hide}>Close</button>
+                            <button className="btn btn-dark" onClick={this.props.hide}>Cancel</button>
                         </div>
                         <div className="col-6 center">
                             <button className="btn btn-dark" onClick={this.props.hide}>Submit</button>

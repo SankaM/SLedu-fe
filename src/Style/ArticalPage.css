@@ -1,0 +1,16 @@
+.articalPage{
+    width: 90%;
+    background:linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(225,237,160,1) 40%);
+    margin: 10px auto;
+}
+.initPicSec{
+    text-align: center;
+}
+.articalPageHaderImages{
+    width: 200px;
+    height: 260px;
+    margin: 10px 25px;
+}
+.interestingPara{
+    margin: 0 30px;
+}

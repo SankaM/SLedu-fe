@@ -57,6 +57,8 @@
     background-color: rgb(168, 166, 166);
     margin: 0 10px;
     margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 4px 10px         ;
 }
 .field{
     border-bottom: 2px solid rgb(155, 153, 153);
@@ -68,4 +70,11 @@
     font-weight: 500;
     margin: 5px auto;
 
+}
+.loginContainer{
+    background-color: rgb(252, 248, 248);
+    margin: 10px 10px;
+}
+.logformWraper{
+    margin: 25px 20px;
 }

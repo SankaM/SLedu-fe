@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import StartWalker from '../Animations/walking.gif';
 import LoadingTedy from '../Animations/animated-teddy.gif';
 import TestImg from '../CoverImgs/Test.png'
+import Url from '../Url';
 class _5maths extends Component {
     constructor(props){
         super(props);
@@ -94,11 +95,11 @@ class _5maths extends Component {
 
     }
     getSubject=(id)=>{
-        fetch('http://ec2-18-140-3-78.ap-southeast-1.compute.amazonaws.com:3005/v1/tutor/subjects?gradeId='+id).then(res=>res.json()).then((response)=>{this.setState({subject:response})})
+        fetch(Url+'/v1/tutor/subjects?gradeId='+id).then(res=>res.json()).then((response)=>{this.setState({subject:response})})
     }
     
     getLesson=(Sid)=>{
-        fetch('http://ec2-18-140-3-78.ap-southeast-1.compute.amazonaws.com:3005/v1/tutor/lessons?subjectId='+Sid).then(res=>res.json()).then((response)=>{
+        fetch(Url+'/v1/tutor/lessons?subjectId='+Sid).then(res=>res.json()).then((response)=>{
             this.setState({Lessons:response});
         })
         this.setState({inraduction:true})

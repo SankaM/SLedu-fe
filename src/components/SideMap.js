@@ -10,7 +10,7 @@ const SideMap=(props)=>{
             el.style.background = "linear-gradient(90deg, rgba(224,173,199,1) 0%, rgba(255,255,255,1) 68%, rgba(224,173,199,1) 86%)";
             el.style.color= "black"
         });
-        event.target.style.background = '#E0ADC7';
+        event.target.style.background = 'rgb(104, 230, 104)';
         event.target.style.color= "#120136"
     }
     return(

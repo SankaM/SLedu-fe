@@ -6,6 +6,7 @@ import {Modal,Button} from 'react-bootstrap';
 import Loading from '../Animations/Loading.gif';
 import '../Style/common.css';
 import '../Style/Quationing.css';
+import Url from '../Url';
 class Examing extends Component {
     state = {   quations:[] ,
                 Uanswers:[],
@@ -21,7 +22,7 @@ class Examing extends Component {
                 this.getQuation(this.props.match.params.id); 
             }
             getQuation=(id)=>{
-                fetch('http://ec2-18-140-3-78.ap-southeast-1.compute.amazonaws.com:3005/v1/tutor/questions?lessonId='+id).then(responc=> responc.json()).then(res=>{
+                fetch(Url+'/v1/tutor/questions?lessonId='+id).then(responc=> responc.json()).then(res=>{
                     this.setState({
                         quations:res,
                         loading:false
