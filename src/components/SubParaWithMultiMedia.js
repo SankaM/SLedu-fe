@@ -6,7 +6,7 @@ import temp3 from "../CoverImgs/tempImg3.jpg";
 const SubParaWithMultiMedia = (props) => {
   return (
     <div>
-      {props.type === "right" && (
+      {props.type === "mainRight" && (
         <div className="row">
           <div className="col-4">
             <div className="artImgSec">
@@ -22,68 +22,16 @@ const SubParaWithMultiMedia = (props) => {
           </div>
           <div className="col-8">
             <p>
-              Albert Einstein was a German-born theoretical physicist who
-              developed the theory of relativity, one of the two pillars of
-              modern physics. His work is also known for its influence on the
-              philosophy of science Albert Einstein was a German-born
-              theoretical physicist who developed the theory of relativity, one
-              of the two pillars of modern physics. His work is also known for
-              its influence on the philosophy of science
-
-              Albert Einstein was a German-born theoretical physicist who
-              developed the theory of relativity, one of the two pillars of
-              modern physics. His work is also known for its influence on the
-              philosophy of science Albert Einstein was a German-born
-              theoretical physicist who developed the theory of relativity, one
-              of the two pillars of modern physics. His work is also known for
-              its influence on the philosophy of science
-
-              Albert Einstein was a German-born theoretical physicist who
-              developed the theory of relativity, one of the two pillars of
-              modern physics. His work is also known for its influence on the
-              philosophy of science Albert Einstein was a German-born
-              theoretical physicist who developed the theory of relativity, one
-              of the two pillars of modern physics. His work is also known for
-              its influence on the philosophy of science
-              
-              Albert Einstein was a German-born theoretical physicist who
-              developed the theory of relativity, one of the two pillars of
-              modern physics. His work is also known for its influence on the
-              philosophy of science Albert Einstein was a German-born
-              theoretical physicist who developed the theory of relativity, one
-              of the two pillars of modern physics. His work is also known for
-              its influence on the philosophy of science
+              {props.para}
             </p>
           </div>
         </div>
       )}
-      {props.type === "left" && (
+      {props.type === "mainLeft" && (
         <div className="row">
           <div className="col-8">
             <p>
-              Albert Einstein was a German-born theoretical physicist who
-              developed the theory of relativity, one of the two pillars of
-              modern physics. His work is also known for its influence on the
-              philosophy of science Albert Einstein was a German-born
-              theoretical physicist who developed the theory of relativity, one
-              of the two pillars of modern physics. His work is also known for
-              its influence on the philosophy of science
-
-              Albert Einstein was a German-born theoretical physicist who
-              developed the theory of relativity, one of the two pillars of
-              modern physics. His work is also known for its influence on the
-              philosophy of science Albert Einstein was a German-born
-              theoretical physicist who developed the theory of relativity, one
-              of the two pillars of modern physics. His work is also known for
-              its influence on the philosophy of science
-
-              Albert Einstein was a German-born theoretical physicist who
-              developed the theory of relativity, one of the two pillars of
-              modern physics. His work is also known for its influence on the
-              philosophy of science Albert Einstein was a German-born
-              theoretical physicist who developed the theory of relativity, one
-              of the two pillars of modern physics. His work is also known for
-              its influence on the philosophy of science
+              {props.para}
             </p>
           </div>
           <div className="col-4">
