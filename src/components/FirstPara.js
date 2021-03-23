@@ -1,7 +1,6 @@
 import React from "react";
 import "../Style/ArticalPage.css";
 
-
 const FirstPara = (props) => {
   return (
     <div>
@@ -17,9 +16,9 @@ const FirstPara = (props) => {
         </p>
       </div>
       <div className="initPicSec">
-        {/* <img src={temp1} alt="temp1" className="articalPageHaderImages" />
-        <img src={temp2} alt="temp1" className="articalPageHaderImages" />
-        <img src={temp3} alt="temp1" className="articalPageHaderImages" /> */}
+        <img src={props.img.temp1} alt="temp1" className="articalPageHaderImages" />
+        <img src={props.img.temp2} alt="temp1" className="articalPageHaderImages" />
+        <img src={props.img.temp3} alt="temp1" className="articalPageHaderImages" />
       </div>
     </div>
   );

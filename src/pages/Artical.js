@@ -55,10 +55,8 @@ const Articl = () => {
         <div className="articalPage">
           {orderedArtical.map((part) => {
               if (part.type === "main") {
-                console.log(part.type);
                 return <FirstPara para={part.text} img={part.images} />;
               } else if (part.type === "mainRight") {
-                console.log(part.type);
                 return (
                   <SubParaWithMultiMedia
                     type={"mainRight"}
@@ -67,7 +65,6 @@ const Articl = () => {
                   />
                 );
               } else if (part.type === "mainLeft") {
-                console.log(part.type);
                 return (
                   <SubParaWithMultiMedia
                     type={"mainLeft"}
@@ -76,7 +73,6 @@ const Articl = () => {
                   />
                 );
               } else if (part.type === "onlyPara") {
-                console.log(part.type);
                 return <SubPara para={part.text} />;
               }
           })}

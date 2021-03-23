@@ -1,0 +1,1 @@
+export const ADD_NORMAL_PARA = 'ADD_NORMAL_PARA'
