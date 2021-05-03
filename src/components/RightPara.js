@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import NoImage from "../CoverImgs/NoImage.jpg";
 
 const RightPara = (props) => {
   const [image, setImage] = useState([]);
@@ -14,27 +13,7 @@ const RightPara = (props) => {
   return (
     <div className="row">
       <div className="col-4">
-        <label className="ImgUpBtn">
-          {image.length > 0 ? (
-            <img src={image[0]} alt="Upload Profile pic" className="profImg" />
-          ) : (
-            <img src={NoImage} alt="Upload Profile pic" className="profImg" />
-          )}
-          {image.length > 1 ? (
-            <img src={image[1]} alt="Upload Profile pic" className="profImg" />
-          ) : (
-            <img src={NoImage} alt="Upload Profile pic" className="profImg" />
-          )}
-          {image.length > 2 ? (
-            <img src={image[2]} alt="Upload Profile pic" className="profImg" />
-          ) : (
-            <img src={NoImage} alt="Upload Profile pic" className="profImg" />
-          )}
-          {image.length > 3 ? (
-            <img src={image[3]} alt="Upload Profile pic" className="profImg" />
-          ) : (
-            <img src={NoImage} alt="Upload Profile pic" className="profImg" />
-          )}
+        <label className="ImgUpBtnSubPara">
           <input
             type="file"
             id="browsArticalMainImg1"
@@ -42,7 +21,46 @@ const RightPara = (props) => {
             onChange={imgHandlaer}
             multiple
           />
+          <h6>Upload Image</h6>
         </label>
+        <div className="row">
+          <div className="col-6 aline">
+            {image.length > 0 ? (
+              <img
+                src={image[0]}
+                alt="Upload Profile pic"
+                className="subParaImg"
+              />
+            ) : null}
+          </div>
+          <div className="col-6 aline">
+            {image.length > 1 ? (
+              <img
+                src={image[1]}
+                alt="Upload Profile pic"
+                className="subParaImg"
+              />
+            ) : null}
+          </div>
+          <div className="col-6 aline">
+            {image.length > 2 ? (
+              <img
+                src={image[2]}
+                alt="Upload Profile pic"
+                className="subParaImg"
+              />
+            ) : null}
+          </div>
+          <div className="col-6 aline">
+            {image.length > 3 ? (
+              <img
+                src={image[3]}
+                alt="Upload Profile pic"
+                className="subParaImg"
+              />
+            ) : null}
+          </div>
+        </div>
       </div>
       <div className="col-8">
         <div class="form-group">
