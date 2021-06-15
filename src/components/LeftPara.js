@@ -1,16 +1,37 @@
 import React, { useEffect, useState } from "react";
-import NoImage from "../CoverImgs/NoImage.jpg";
 
 const LeftPara = (props) => {
   const [image, setImage] = useState([]);
-  const imgHandlaer = (event) => {
-    let tempImg = [];
-    for (let i = 0; i < event.target.files.length; i++) {
-      const ObjectUrl = URL.createObjectURL(event.target.files[i]);
-      tempImg.push(ObjectUrl);
-    }
-    setImage(tempImg);
+  const [prevImage, setPrevImage] = useState([]);
+
+  const imgHandlaer = ({ target: { files } }) => {
+    let myImages = Array.from(files);
+    let mainImgList = [...image];
+    let previewImgUrlList = [...prevImage];
+   
+    myImages.forEach((file) => {
+      let reader = new FileReader();
+      reader.onload = () => {
+        mainImgList = [...mainImgList, file];
+        previewImgUrlList = [...previewImgUrlList, reader.result];
+        setImage(mainImgList);
+        setPrevImage(previewImgUrlList);
+      };
+      reader.readAsDataURL(file);
+    });
   };
+  const closeBtnHandler = (index) => {
+    let mainImgList = image;
+    let previewImgUrlList = prevImage;
+    var promis = [];
+    promis.push(mainImgList.splice(index, 1));
+    promis.push(previewImgUrlList.splice(index, 1));
+    Promise.all(promis).then(async () => {
+      setImage([...mainImgList]);
+      setPrevImage([...previewImgUrlList]);
+    });
+  };
+
   return (
     <div className="row">
       <div className="col-8">
@@ -34,42 +55,28 @@ const LeftPara = (props) => {
           <h6>Upload Image</h6>
         </label>
         <div className="row">
-          <div className="col-6 aline">
-            {image.length > 0 ? (
-              <img
-                src={image[0]}
-                alt="Upload Profile pic"
-                className="subParaImg"
-              />
-            ) : null}
-          </div>
-          <div className="col-6 aline">
-            {image.length > 1 ? (
-              <img
-                src={image[1]}
-                alt="Upload Profile pic"
-                className="subParaImg"
-              />
-            ) : null}
-          </div>
-          <div className="col-6 aline">
-            {image.length > 2 ? (
-              <img
-                src={image[2]}
-                alt="Upload Profile pic"
-                className="subParaImg"
-              />
-            ) : null}
-          </div>
-          <div className="col-6 aline">
-            {image.length > 3 ? (
-              <img
-                src={image[3]}
-                alt="Upload Profile pic"
-                className="subParaImg"
-              />
-            ) : null}
-          </div>
+        {prevImage.length !== 0 &&
+          prevImage.map((url,index) => (
+            <div className="articalSubImageSec" key={index}>
+              <div className="ImgUploadBtn">
+                <div className="imgWraper">
+                  <img
+                    src={url}
+                    alt="Upload pic"
+                    className="articalMainImage"
+                  />
+                  <button
+                    type="button"
+                    className="imgCloseBtn"
+                    name="removeMain1"
+                    onClick={()=>closeBtnHandler(index)}
+                  >
+                    x
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

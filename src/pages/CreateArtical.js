@@ -6,52 +6,65 @@ import Layout from "../components/Layout";
 import LeftPara from "../components/LeftPara";
 import RightPara from "../components/RightPara";
 import Para from "../components/Para";
-import UploadImage from "../CoverImgs/UploadImage.png";
+import PreviewArtical from "../components/PreviewArtical";
 import * as articalAction from "../store/actions/actionIndex";
 import { useDispatch, useSelector } from "react-redux";
 
+// text editor libraies
+import { Editor } from "react-draft-wysiwyg";
+import { EditorState, convertToRaw } from "draft-js";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import draftToHtml from "draftjs-to-html";
+import ReactHtmlParser from 'react-html-parser';
+
 const CreateArtical = () => {
-  const [mainImg1, setMainImg1] = useState(UploadImage);
-  const [mainImg2, setMainImg2] = useState(UploadImage);
-  const [mainImg3, setMainImg3] = useState(UploadImage);
-  const [mainImg4, setMainImg4] = useState(UploadImage);
+  const [mainImgs, setMainImgs] = useState([]);
+  const [previewImgUrl, setPreviewImgUrl] = useState([]);
   const [anchorEl, setAnchorEl] = useState(null);
   const [context, setContext] = useState([]);
+  const [showPrevArtical, setShowPrevArtical] = useState(false);
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   const dispatch = useDispatch();
+  const articalContext = useSelector(state=> state.ar.articalContext)
 
-  const proImgHandlaer = (event) => {
-    const fildId = event.target.name;
-    console.log(fildId);
-    switch (fildId) {
-      case "browsArticalMainImg1":
-        {
-          const ObjectUrl = URL.createObjectURL(event.target.files[0]);
-          setMainImg1(ObjectUrl);
-        }
-        break;
-      case "browsArticalMainImg2":
-        {
-          const ObjectUrl = URL.createObjectURL(event.target.files[0]);
-          setMainImg2(ObjectUrl);
-        }
-        break;
-      case "browsArticalMainImg3":
-        {
-          const ObjectUrl = URL.createObjectURL(event.target.files[0]);
-          setMainImg3(ObjectUrl);
-        }
-        break;
-      case "browsArticalMainImg4":
-        {
-          const ObjectUrl = URL.createObjectURL(event.target.files[0]);
-          setMainImg4(ObjectUrl);
-        }
-        break;
-      default: {
-        break;
-      }
-    }
+  const onEditorStateChange = (editorState) => {
+    setEditorState(editorState);
+    let paraHtmlFormat = draftToHtml(
+      convertToRaw(editorState.getCurrentContent())
+    );
+    dispatch(articalAction.addMainPara(paraHtmlFormat));
+  };
+  const proImgHandlaer = ({ target: { files } }) => {
+    let myImages = Array.from(files);
+    let mainImgList = [...mainImgs];
+    let previewImgUrlList = [...previewImgUrl];
+
+
+    const promice = myImages.map((file) => {
+      let reader = new FileReader();
+      reader.onload = () => {
+        mainImgList = [...mainImgList, file];
+        previewImgUrlList = [...previewImgUrlList, reader.result];
+        setMainImgs(mainImgList);
+        setPreviewImgUrl(previewImgUrlList);
+        dispatch(articalAction.addMainParaImg(mainImgList, previewImgUrlList));
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+  const closeBtnHandler = (index) => {
+    console.log(index);
+    let mainImgList = mainImgs;
+    let previewImgUrlList = previewImgUrl;
+    var promis = [];
+    promis.push(mainImgList.splice(index, 1));
+    promis.push(previewImgUrlList.splice(index, 1));
+    Promise.all(promis).then(async () => {
+      setMainImgs([...mainImgList]);
+      setPreviewImgUrl([...previewImgUrlList]);
+      console.log(previewImgUrlList);
+    });
   };
   const handleAddClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -75,80 +88,60 @@ const CreateArtical = () => {
     setContext(articalContext);
     dispatch(articalAction.addNormalPara());
   };
+  const closePrevArti=()=>{
+    setShowPrevArtical(false)
+  }
   return (
     <Layout>
       <div className="container">
         <h2>Create Artical</h2>
         <form>
           <div className="row">
-            <div className="col-3 articalMainImageSec">
-              <label className="ImgUploadBtn">
-                <img
-                  src={mainImg1}
-                  alt="Upload pic"
-                  className="articalMainImage"
-                />
-                <input
-                  type="file"
-                  name="browsArticalMainImg1"
-                  className="d-none"
-                  onChange={proImgHandlaer}
-                />
-              </label>
-            </div>
-            <div className="col-3 articalMainImageSec">
-              <label className="ImgUploadBtn">
-                <img
-                  src={mainImg2}
-                  alt="Upload pic"
-                  className="articalMainImage"
-                />
-                <input
-                  type="file"
-                  name="browsArticalMainImg2"
-                  className="d-none"
-                  onChange={proImgHandlaer}
-                />
-              </label>
-            </div>
-            <div className="col-3 articalMainImageSec">
-              <label className="ImgUploadBtn">
-                <img
-                  src={mainImg3}
-                  alt="Upload pic"
-                  className="articalMainImage"
-                />
-                <input
-                  type="file"
-                  name="browsArticalMainImg3"
-                  className="d-none"
-                  onChange={proImgHandlaer}
-                />
-              </label>
-            </div>
-            <div className="col-3 articalMainImageSec">
-              <label className="ImgUploadBtn">
-                <img
-                  src={mainImg4}
-                  alt="Upload pic"
-                  className="articalMainImage"
-                />
-                <input
-                  type="file"
-                  name="browsArticalMainImg4"
-                  className="d-none"
-                  onChange={proImgHandlaer}
-                />
-              </label>
-            </div>
+            <label className="ImgUploadBtnMain">
+              Upload Images
+              <input
+                type="file"
+                multiple
+                name="browsArticalMainImg1"
+                className="d-none"
+                onChange={proImgHandlaer}
+              />
+            </label>
+          </div>
+          <div className="row">
+            {previewImgUrl.length !== 0 &&
+              previewImgUrl.map((url, index) => (
+                <div className="col-3 articalMainImageSec" key={index}>
+                  <div className="ImgUploadBtn">
+                    <div className="imgWraper">
+                      <img
+                        src={url}
+                        alt="Upload pic"
+                        className="articalMainImage"
+                      />
+                      <button
+                        type="button"
+                        className="imgCloseBtn"
+                        name="removeMain1"
+                        onClick={() => closeBtnHandler(index)}
+                      >
+                        x
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
           </div>
           <div class="form-group">
             <label for="exampleFormControlTextarea1">Main Part</label>
-            <textarea
-              class="form-control"
-              id="exampleFormControlTextarea1"
-              rows="10"
-            ></textarea>
+            <Editor
+              editorState={editorState}
+              toolbarClassName="toolbarClassName"
+              wrapperClassName="wrapperClassName"
+              editorClassName="editorClassName"
+              onEditorStateChange={onEditorStateChange}
+            />
+            <div>{ReactHtmlParser (articalContext[0].para)}</div>
           </div>
           <div className="articalContext">{context}</div>
           <div className="AddParaBtnSec">
@@ -176,7 +169,9 @@ const CreateArtical = () => {
             </MenuItem>
           </Menu>
         </form>
+        <button type="button" onClick={()=>setShowPrevArtical(true)}>Preview</button>
       </div>
+      <PreviewArtical show={showPrevArtical} closePrevArti={closePrevArti}/>
     </Layout>
   );
 };

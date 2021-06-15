@@ -37,17 +37,18 @@ const articalDemoData = [
     type: "mainLeft",
   },
 ];
-const Articl = () => {
+const Articl = (props) => {
   const [orderedArtical, setOrderedArtical] = useState([]);
   const [artical, setArtical] = useState([]);
-  const setOrder = () => {
-    const orderdArtical = articalDemoData.sort((a, b) => {
+  const setOrder = (artical) => {
+    console.log("artical",artical)
+    const orderdArtical = artical.sort((a, b) => {
       return a.part - b.part;
     });
     setOrderedArtical(orderdArtical);
   };
   useEffect(() => {
-    setOrder();
+    setOrder(props.articalContext);
   }, []);
   return (
     <LayOut>
