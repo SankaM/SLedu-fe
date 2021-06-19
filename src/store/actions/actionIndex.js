@@ -1,5 +1,9 @@
 export {
     addNormalPara,
     addMainPara,
-    addMainParaImg
+    addLeftPara,
+    addMainParaImg,
+    addParaText,
+    addSubParaImg,
+    addRightPara
 } from './articalAction'

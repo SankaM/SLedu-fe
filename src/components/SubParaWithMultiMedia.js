@@ -1,12 +1,11 @@
-import React,{useEffect} from "react";
-import temp1 from "../CoverImgs/tempImg1.jpg";
-import temp2 from "../CoverImgs/tempImg2.jpg";
-import temp3 from "../CoverImgs/tempImg3.jpg";
+import React, { useEffect } from "react";
+import ReactHtmlParser from "react-html-parser";
+
 
 const SubParaWithMultiMedia = (props) => {
-  useEffect(()=>{
-    console.log("Image",props.img);
-  },[])
+  useEffect(() => {
+    console.log("Image", props.img);
+  }, []);
   return (
     <div>
       {props.type === "mainRight" && (
@@ -14,8 +13,9 @@ const SubParaWithMultiMedia = (props) => {
           <div className="col-4">
             <div className="artImgSec">
               <div className="column">
-                <img src={props.img.temp1} alt="artImg" className="artiImg" />
-                <img src={props.img.temp2} alt="artImg" className="artiImg" />
+                {props.img.length !== 0 && props.img.map((url,index)=>
+                  <img src={url} alt={url} key={index} className="artiImg" />
+                )}
               </div>
 
               <div className="column">
@@ -24,24 +24,21 @@ const SubParaWithMultiMedia = (props) => {
             </div>
           </div>
           <div className="col-8">
-            <p>
-              {props.para}
-            </p>
+            <p>{ReactHtmlParser(props.para)}</p>
           </div>
         </div>
       )}
       {props.type === "mainLeft" && (
         <div className="row">
           <div className="col-8">
-            <p>
-              {props.para}
-            </p>
+            <p>{ReactHtmlParser(props.para)}</p>
           </div>
           <div className="col-4">
             <div className="artImgSec">
               <div className="column">
-                <img src={props.img.temp1} alt="artImg" className="artiImg" />
-                <img src={props.img.temp2} alt="artImg" className="artiImg" />
+              {props.img.length !== 0 && props.img.map((url,index)=>
+                <img src={url} alt={url} key={index} className="artiImg" />
+              )}
               </div>
 
               <div className="column">

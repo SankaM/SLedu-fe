@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertToRaw } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import "../Style/ArticalPage.css";
 import draftToHtml from "draftjs-to-html";
 import ReactHtmlParser from 'react-html-parser';
 
@@ -74,12 +75,14 @@ const CreateArtical = () => {
   };
   const addLeftPara = () => {
     setAnchorEl(null);
-    let articalContext = [...context, <LeftPara />];
+    let articalContext = [...context, <LeftPara paraNo={context.length + 1}/>];
+    dispatch(articalAction.addLeftPara());
     setContext(articalContext);
   };
   const addRightPara = () => {
     setAnchorEl(null);
-    let articalContext = [...context, <RightPara />];
+    let articalContext = [...context, <RightPara paraNo={context.length + 1}/>];
+    dispatch(articalAction.addRightPara());
     setContext(articalContext);
   };
   const addPara = () => {
@@ -93,7 +96,7 @@ const CreateArtical = () => {
   }
   return (
     <Layout>
-      <div className="container">
+      <div className="container createArtical-backgraund">
         <h2>Create Artical</h2>
         <form>
           <div className="row">
@@ -132,7 +135,7 @@ const CreateArtical = () => {
                 </div>
               ))}
           </div>
-          <div class="form-group">
+          <div class="form-group text-areaBackGraund">
             <label for="exampleFormControlTextarea1">Main Part</label>
             <Editor
               editorState={editorState}
@@ -141,7 +144,6 @@ const CreateArtical = () => {
               editorClassName="editorClassName"
               onEditorStateChange={onEditorStateChange}
             />
-            <div>{ReactHtmlParser (articalContext[0].para)}</div>
           </div>
           <div className="articalContext">{context}</div>
           <div className="AddParaBtnSec">
@@ -162,10 +164,10 @@ const CreateArtical = () => {
           >
             <MenuItem onClick={addPara}>Paragraph without multimedia</MenuItem>
             <MenuItem onClick={addRightPara}>
-              Paragraph With multimedia(Right side)
+              Paragraph (Images - right side)
             </MenuItem>
             <MenuItem onClick={addLeftPara}>
-              Paragraph With multimedia(Left side)
+              Paragraph (Images - left side)
             </MenuItem>
           </Menu>
         </form>

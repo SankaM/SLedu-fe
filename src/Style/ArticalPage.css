@@ -7,10 +7,16 @@
     text-align: center;
 }
 .articalPageHaderImages{
-    width: 200px;
-    height: 260px;
+    width: 15%;
+    /* height: 260px; */
     margin: 10px 25px;
 }
 .interestingPara{
     margin: 0 30px;
+}
+.createArtical-backgraund{
+    background-color: #E1EDA0;
+}
+.text-areaBackGraund{
+    background-color: #fff;
 }

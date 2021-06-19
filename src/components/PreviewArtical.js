@@ -21,7 +21,7 @@ const PreviewArtical=(props)=>{
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-            <Artical articalContext={articalContext}/>
+            <Artical articalContext={articalContext} preview={true}/>
         </Modal.Body>
       </Modal>
         </>
