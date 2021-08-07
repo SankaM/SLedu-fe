@@ -4,8 +4,8 @@ import Qcard from '../components/Qcard';
 import Qreviwe from '../components/Qreview';
 import {Modal,Button} from 'react-bootstrap';
 import Loading from '../Animations/Loading.gif';
-import '../Style/common.css';
-import '../Style/Quationing.css';
+// import '../Style/common.css';
+// import '../Style/Quationing.css';
 import Url from '../Url';
 class Examing extends Component {
     state = {   quations:[] ,

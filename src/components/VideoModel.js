@@ -1,6 +1,6 @@
 import React from 'react';
 import {Modal} from 'react-bootstrap';
-import '../Style/Note.css';
+// import '../Style/Note.css';
 
 const VideoModel=(props)=>{
     return(<Modal

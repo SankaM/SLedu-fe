@@ -1,6 +1,6 @@
 import React from 'react';
 import Aux from './Wrap';
-import '../Style/SideMap.css'
+// import '../Style/SideMap.css'
 import { Link } from 'react-router-dom';
 const SideMap=(props)=>{
 

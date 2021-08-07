@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Layout from '../components/Layout';
 import SideMap from '../components/SideMap'
 import Lcard from '../components/LessonCard';
-import '../Style/Grade5.css';
+// import '../Style/Grade5.css';
 import { Link } from 'react-router-dom';
 import StartWalker from '../Animations/walking.gif';
 import LoadingTedy from '../Animations/animated-teddy.gif';

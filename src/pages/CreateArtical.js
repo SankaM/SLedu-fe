@@ -14,9 +14,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertToRaw } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import "../Style/ArticalPage.css";
+// import "../Style/ArticalPage.css";
 import draftToHtml from "draftjs-to-html";
-import ReactHtmlParser from 'react-html-parser';
+import ReactHtmlParser from "react-html-parser";
 
 const CreateArtical = () => {
   const [mainImgs, setMainImgs] = useState([]);
@@ -27,7 +27,7 @@ const CreateArtical = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   const dispatch = useDispatch();
-  const articalContext = useSelector(state=> state.ar.articalContext)
+  const articalContext = useSelector((state) => state.ar.articalContext);
 
   const onEditorStateChange = (editorState) => {
     setEditorState(editorState);
@@ -40,7 +40,6 @@ const CreateArtical = () => {
     let myImages = Array.from(files);
     let mainImgList = [...mainImgs];
     let previewImgUrlList = [...previewImgUrl];
-
 
     const promice = myImages.map((file) => {
       let reader = new FileReader();
@@ -75,86 +74,94 @@ const CreateArtical = () => {
   };
   const addLeftPara = () => {
     setAnchorEl(null);
-    let articalContext = [...context, <LeftPara paraNo={context.length + 1}/>];
+    let articalContext = [...context, <LeftPara paraNo={context.length + 1} removePara={removePara}/>];
     dispatch(articalAction.addLeftPara());
     setContext(articalContext);
   };
   const addRightPara = () => {
     setAnchorEl(null);
-    let articalContext = [...context, <RightPara paraNo={context.length + 1}/>];
+    let articalContext = [
+      ...context,
+      <RightPara paraNo={context.length + 1} removePara={removePara}/>,
+    ];
     dispatch(articalAction.addRightPara());
     setContext(articalContext);
   };
   const addPara = () => {
     setAnchorEl(null);
-    let articalContext = [...context, <Para />];
-    setContext(articalContext);
+    let articalContext = [...context, <Para paraNo={context.length + 1} removePara={removePara}/>];
     dispatch(articalAction.addNormalPara());
+    setContext(articalContext);
   };
-  const closePrevArti=()=>{
-    setShowPrevArtical(false)
+  const closePrevArti = () => {
+    setShowPrevArtical(false);
+  };
+  const removePara=(index)=>{
+    alert(index)
   }
   return (
     <Layout>
-      <div className="container createArtical-backgraund">
+      <div className="creArtiBtnCon">
+        <button type="button" onClick={() => setShowPrevArtical(true)} className={"btn btn-primary creaArtiTopBtn"}>
+          Preview
+        </button>
+        <Button variant="contained" color="secondary" onClick={handleAddClick} className="creaArtiTopBtn">
+          Add New Paragraph
+        </Button>
+      </div>
+      <div className="container ">
         <h2>Create Artical</h2>
         <form>
-          <div className="row">
-            <label className="ImgUploadBtnMain">
-              Upload Images
-              <input
-                type="file"
-                multiple
-                name="browsArticalMainImg1"
-                className="d-none"
-                onChange={proImgHandlaer}
-              />
-            </label>
-          </div>
-          <div className="row">
-            {previewImgUrl.length !== 0 &&
-              previewImgUrl.map((url, index) => (
-                <div className="col-3 articalMainImageSec" key={index}>
-                  <div className="ImgUploadBtn">
-                    <div className="imgWraper">
-                      <img
-                        src={url}
-                        alt="Upload pic"
-                        className="articalMainImage"
-                      />
-                      <button
-                        type="button"
-                        className="imgCloseBtn"
-                        name="removeMain1"
-                        onClick={() => closeBtnHandler(index)}
-                      >
-                        x
-                      </button>
+          <div className="createArtical-backgraund">
+            <div className="row">
+              <label className="ImgUploadBtnMain">
+                Upload Images
+                <input
+                  type="file"
+                  multiple
+                  name="browsArticalMainImg1"
+                  className="d-none"
+                  onChange={proImgHandlaer}
+                />
+              </label>
+            </div>
+            <div className="row">
+              {previewImgUrl.length !== 0 &&
+                previewImgUrl.map((url, index) => (
+                  <div className="col-3 articalMainImageSec" key={index}>
+                    <div className="ImgUploadBtn">
+                      <div className="imgWraper">
+                        <img
+                          src={url}
+                          alt="Upload pic"
+                          className="articalMainImage"
+                        />
+                        <button
+                          type="button"
+                          className="imgCloseBtn"
+                          name="removeMain1"
+                          onClick={() => closeBtnHandler(index)}
+                        >
+                          x
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-          </div>
-          <div class="form-group text-areaBackGraund">
-            <label for="exampleFormControlTextarea1">Main Part</label>
-            <Editor
-              editorState={editorState}
-              toolbarClassName="toolbarClassName"
-              wrapperClassName="wrapperClassName"
-              editorClassName="editorClassName"
-              onEditorStateChange={onEditorStateChange}
-            />
+                ))}
+            </div>
+            <div class="form-group text-areaBackGraund">
+              <label for="exampleFormControlTextarea1">Main Part</label>
+              <Editor
+                editorState={editorState}
+                toolbarClassName="toolbarClassName"
+                wrapperClassName="wrapperClassName"
+                editorClassName="editorClassName"
+                onEditorStateChange={onEditorStateChange}
+              />
+            </div>
           </div>
           <div className="articalContext">{context}</div>
-          <div className="AddParaBtnSec">
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={handleAddClick}
-            >
-              Add New Paragraph
-            </Button>
-          </div>
+          <div className="AddParaBtnSec"></div>
           <Menu
             id="simple-menu"
             anchorEl={anchorEl}
@@ -171,9 +178,8 @@ const CreateArtical = () => {
             </MenuItem>
           </Menu>
         </form>
-        <button type="button" onClick={()=>setShowPrevArtical(true)}>Preview</button>
       </div>
-      <PreviewArtical show={showPrevArtical} closePrevArti={closePrevArti}/>
+      <PreviewArtical show={showPrevArtical} closePrevArti={closePrevArti} />
     </Layout>
   );
 };

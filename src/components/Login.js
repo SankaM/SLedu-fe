@@ -1,6 +1,6 @@
 import React from 'react';
 import Aux from './Wrap';
-import '../Style/signUp.css'
+// import '../Style/signUp.css'
 import {Modal,Form} from 'react-bootstrap'
 
 const Login=(props)=>{

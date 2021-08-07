@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Style/Qreview.css';
+// import '../Style/Qreview.css';
 import Aux from './Wrap';
 import CorImg from '../CoverImgs/correct.png';
 import WroImg from '../CoverImgs/Wrong.png';

@@ -1,6 +1,6 @@
 import React from 'react';
 import Aux from './Wrap';
-import '../Style/LCard.css'
+// import '../Style/LCard.css'
 
 const LessonCard=(props)=>{
     return(

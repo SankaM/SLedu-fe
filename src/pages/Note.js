@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Layout from "../components/Layout";
 import NoteFact from "../components/NoteFact";
 import Url from "../Url";
-import "../Style/Note.css";
+// import "../Style/Note.css";
 import VideoModel from "../components/VideoModel";
 import Darrow from "../CoverImgs/arrow.png";
 // import Uarrow from '../CoverImgs/Uarrow.png'

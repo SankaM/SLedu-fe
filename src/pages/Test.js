@@ -4,7 +4,7 @@ import TestQcard from '../components/TestQcard';
 import Pagination from '../components/Paginate';
 import {Modal} from 'react-bootstrap';
 import Qreviwe from '../components/Qreview';
-import '../Style/Test.css'
+// import '../Style/Test.css'
 class Test extends Component {
     constructor(props){
         super(props);

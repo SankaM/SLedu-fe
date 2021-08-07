@@ -1,21 +1,11 @@
 import React from "react";
+import ReactHtmlParser from "react-html-parser";
 
-const SubPara = () => {
+const SubPara = (props) => {
   return (
     <div>
       <p>
-        Albert Einstein was a German-born theoretical physicist who developed
-        the theory of relativity, one of the two pillars of modern physics. His
-        work is also known for its influence on the philosophy of science Albert
-        Einstein was a German-born theoretical physicist who developed the
-        theory of relativity, one of the two pillars of modern physics. His work
-        is also known for its influence on the philosophy of science Albert
-        Einstein was a German-born theoretical physicist who developed the
-        theory of relativity, one of the two pillars of modern physics. His work
-        is also known for its influence on the philosophy of science Albert
-        Einstein was a German-born theoretical physicist who developed the
-        theory of relativity, one of the two pillars of modern physics. His work
-        is also known for its influence on the philosophy of science
+       {ReactHtmlParser(props.para)}
       </p>
     </div>
   );

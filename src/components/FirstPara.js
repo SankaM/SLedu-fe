@@ -1,5 +1,4 @@
 import React from "react";
-import "../Style/ArticalPage.css";
 import ReactHtmlParser from 'react-html-parser';
 
 const FirstPara = (props) => {

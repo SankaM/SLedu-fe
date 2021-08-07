@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Modal,Form} from 'react-bootstrap';
 import ProfImg from '../CoverImgs/ProfImage.png'
 import Aux from './Wrap';
-import '../Style/signUp.css'
+// import '../Style/signUp.css'
 
 class RegisterModel extends Component{
     constructor(props){

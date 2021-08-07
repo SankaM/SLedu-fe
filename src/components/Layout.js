@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import Aux from './Wrap';
-import '../Style/Layout.css'
+// import '../Style/Layout.css'
 import { NavLink } from 'react-router-dom';
 import {DropdownButton,Dropdown} from 'react-bootstrap';
 import HomeImg from '../CoverImgs/Home.png';

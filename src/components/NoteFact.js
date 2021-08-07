@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Style/Note.css';
+// import '../Style/Note.css';
 import Aux from './Wrap';
 
 const NoteFact=(props)=>{

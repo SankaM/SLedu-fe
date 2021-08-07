@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Layout from '../components/Layout';
 import Artical from '../components/Artical';
-import '../Style/home.css';
 class Home extends Component {
     state = {  }
     render() { 

@@ -15,12 +15,6 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.ADD_NORMAL_PARA: {
-      return {
-        ...state,
-        articalContext: action.para,
-      };
-    }
     case actionTypes.ADD_MAIN_PARA: {
       let articalContext = state.articalContext;
       articalContext[0].text = action.para;
@@ -79,6 +73,22 @@ const reducer = (state = initialState, action) => {
         images: [],
         text: EditorState.createEmpty(),
       }
+      articalContext.push(newPara)
+      return {
+        ...state,
+        articalContext: articalContext,
+      };
+    }
+    case actionTypes.ADD_NORMAL_PARA: {
+      let articalContext = state.articalContext;
+      let newPara = {
+        part:articalContext.length + 1,
+        type: "onlyPara",
+        imgListForUpoad: [],
+        images: [],
+        text: EditorState.createEmpty(),
+      }
+      console.log("newPara",newPara)
       articalContext.push(newPara)
       return {
         ...state,

@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertToRaw } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import "../Style/ArticalPage.css";
 import draftToHtml from "draftjs-to-html";
 import ReactHtmlParser from 'react-html-parser';
-import "../Style/ArticalPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import * as articalAction from "../store/actions/actionIndex";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
 
 const LeftPara = (props) => {
   const [image, setImage] = useState([]);
@@ -54,7 +54,19 @@ const LeftPara = (props) => {
   };
 
   return (
-    <div className="row">
+    <div className="row createArtical-backgraund">
+    <div className="removeButton">
+    <IconButton
+      aria-label="delete"
+      style={{
+        border: "none",
+        outline: "none",
+      }}
+      onClick={()=>props.removePara(props.paraNo)}
+    >
+      <CloseIcon />
+    </IconButton>{" "}
+  </div>
       <div className="col-8">
         <div class="form-group text-areaBackGraund">
           <Editor

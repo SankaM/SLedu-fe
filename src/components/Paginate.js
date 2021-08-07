@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Style/pagination.css'
+// import '../Style/pagination.css'
 const Pagination=(props)=>{
     const pageNumber = [];
     for(let i=1 ; i <=props.Tquestion;i++){

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Aux from './Wrap';
-import '../Style/Qcard.css';
+// import '../Style/Qcard.css';
 // import swal from '@sweetalert/with-react';
 
 class TestQcard extends Component {
