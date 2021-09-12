@@ -8,7 +8,8 @@ import Test from './pages/Test';
 import PageNotFound from './pages/404';
 import Artical from './pages/Artical';
 import Admin from './pages/Admin';
-import CreateArtical from './pages/CreateArtical';
+import ArticalCreations from './pages/ArticalCreations';
+import MakeQuations from './pages/MakeQuations';
 
 class App extends Component {
   render(){
@@ -21,7 +22,8 @@ class App extends Component {
           <Route  path="/Test/:id2/:id" component={Test}/>
           <Route  path="/Note/:id" component={Note}/>
           <Route  path="/Artical/:id" component={Artical}/>
-          <Route  path="/CreateArtical" component={CreateArtical}/>
+          <Route  path="/Content/ArticalCreations" component={ArticalCreations}/>
+          <Route  path="/Content/MakeQuations" component={MakeQuations}/>
           <Route  path="/Admin" component={Admin}/>
           <Route  path="/404" component={PageNotFound}/>
           <Redirect to="/404"/>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import "../Style/ArticalPage.css";
 import LayOut from "../components/Layout";
 import FirstPara from "../components/FirstPara";
 import SubParaWithMultiMedia from "../components/SubParaWithMultiMedia";

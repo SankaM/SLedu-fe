@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import Layout from "../components/Layout";
-import LeftPara from "../components/LeftPara";
-import RightPara from "../components/RightPara";
-import Para from "../components/Para";
-import PreviewArtical from "../components/PreviewArtical";
+import Layout from "./Layout";
+import LeftPara from "./LeftPara";
+import RightPara from "./RightPara";
+import Para from "./Para";
+import ParaControllor from "./ParaController";
+import PreviewArtical from "./PreviewArtical";
 import * as articalAction from "../store/actions/actionIndex";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -27,7 +28,7 @@ const CreateArtical = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   const dispatch = useDispatch();
-  const articalContext = useSelector((state) => state.ar.articalContext);
+  const articalContext = useSelector((state) => state.ar.articalContext)
 
   const onEditorStateChange = (editorState) => {
     setEditorState(editorState);
@@ -53,6 +54,7 @@ const CreateArtical = () => {
       reader.readAsDataURL(file);
     });
   };
+  
   const closeBtnHandler = (index) => {
     console.log(index);
     let mainImgList = mainImgs;
@@ -74,33 +76,52 @@ const CreateArtical = () => {
   };
   const addLeftPara = () => {
     setAnchorEl(null);
-    let articalContext = [...context, <LeftPara paraNo={context.length + 1} removePara={removePara}/>];
+    // let articalContext = [...context, <LeftPara paraNo={context.length + 1} removePara={removePara} key={context.length + 1}/>];
+    // let articalContext = context;
+    // let para = {
+    //   type:"left",
+    //   paraNo:context.length + 1
+    // }
+    // articalContext.push(para)
     dispatch(articalAction.addLeftPara());
-    setContext(articalContext);
+    // setContext(articalContext);
+    // console.log("context 1",context);
   };
   const addRightPara = () => {
     setAnchorEl(null);
-    let articalContext = [
-      ...context,
-      <RightPara paraNo={context.length + 1} removePara={removePara}/>,
-    ];
+    // let articalContext = useSelector((state) => state.ar.articalContext);;
+    // let para = {
+    //   type:"right",
+    //   paraNo:context.length + 1
+    // }
+    // articalContext.push(para)
     dispatch(articalAction.addRightPara());
-    setContext(articalContext);
+    // setContext(articalContext);
   };
   const addPara = () => {
     setAnchorEl(null);
-    let articalContext = [...context, <Para paraNo={context.length + 1} removePara={removePara}/>];
+   
+    // let articalContext = [...context, <Para paraNo={context.length + 1} removePara={removePara}  key={context.length + 1}/>];
+    // let articalContext = context;
+    // let para = {
+    //   type:"normal",
+    //   paraNo:context.length + 1
+    // }
+    // articalContext.push(para)
     dispatch(articalAction.addNormalPara());
-    setContext(articalContext);
+    // setContext(articalContext);
+    // console.log("context 3",context);
   };
   const closePrevArti = () => {
     setShowPrevArtical(false);
   };
-  const removePara=(index)=>{
-    alert(index)
+  let removePara=()=>{
+    let test = context
+    console.log("context",context);
   }
+ 
   return (
-    <Layout>
+    <div>
       <div className="creArtiBtnCon">
         <button type="button" onClick={() => setShowPrevArtical(true)} className={"btn btn-primary creaArtiTopBtn"}>
           Preview
@@ -111,7 +132,6 @@ const CreateArtical = () => {
       </div>
       <div className="container ">
         <h2>Create Artical</h2>
-        <form>
           <div className="createArtical-backgraund">
             <div className="row">
               <label className="ImgUploadBtnMain">
@@ -160,7 +180,8 @@ const CreateArtical = () => {
               />
             </div>
           </div>
-          <div className="articalContext">{context}</div>
+          {articalContext.map(x=><ParaControllor paraNo={x.part} type={x.type}/>)}
+          <div className="articalContext"></div>
           <div className="AddParaBtnSec"></div>
           <Menu
             id="simple-menu"
@@ -169,18 +190,17 @@ const CreateArtical = () => {
             open={Boolean(anchorEl)}
             onClose={handleAddClose}
           >
-            <MenuItem onClick={addPara}>Paragraph without multimedia</MenuItem>
             <MenuItem onClick={addRightPara}>
               Paragraph (Images - right side)
             </MenuItem>
             <MenuItem onClick={addLeftPara}>
               Paragraph (Images - left side)
             </MenuItem>
+            <MenuItem onClick={addPara}>Normal paragraph</MenuItem>
           </Menu>
-        </form>
       </div>
       <PreviewArtical show={showPrevArtical} closePrevArti={closePrevArti} />
-    </Layout>
+    </div>
   );
 };
 export default CreateArtical;

@@ -33,6 +33,13 @@ export const addNormalPara=()=>{
    }
 }
 
+export const removePara=(index)=>{
+   return{
+    type:ActionTypes.REMOVE_PARA,
+    index:index
+   }
+}
+
 export const addMainParaImg=(imgUpload,imgPre)=>{
    return{
     type:ActionTypes.ADD_MAIN_IMG,

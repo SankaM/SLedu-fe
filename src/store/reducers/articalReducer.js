@@ -25,7 +25,7 @@ const reducer = (state = initialState, action) => {
     }
     case actionTypes.ADD_PARA_TEXT: {
       let articalContext = state.articalContext;
-      articalContext[action.paraNo].text = action.para;
+      articalContext[action.paraNo - 1].text = action.para;
       return {
         ...state,
         articalContext: articalContext,
@@ -42,8 +42,8 @@ const reducer = (state = initialState, action) => {
     }
     case actionTypes.ADD_SUB_IMG: {
       let articalContext = state.articalContext;
-      articalContext[action.paraNo].imgListForUpoad = action.imgUpload;
-      articalContext[action.paraNo].images = action.imgPre;
+      articalContext[action.paraNo-1].imgListForUpoad = action.imgUpload;
+      articalContext[action.paraNo-1].images = action.imgPre;
       return {
         ...state,
         articalContext: articalContext,
@@ -88,8 +88,15 @@ const reducer = (state = initialState, action) => {
         images: [],
         text: EditorState.createEmpty(),
       }
-      console.log("newPara",newPara)
       articalContext.push(newPara)
+      return {
+        ...state,
+        articalContext: articalContext,
+      };
+    }
+    case actionTypes.REMOVE_PARA: {
+      let articalContext = state.articalContext;
+      articalContext = articalContext.filter(x=>x.part !== action.index)
       return {
         ...state,
         articalContext: articalContext,

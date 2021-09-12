@@ -11,7 +11,7 @@ class Home extends Component {
                         <div className="leftCol">
                             <h2 className="leftHader">Share your Knowlage with us</h2>
                             <div className="createSec">
-                                <a href="/CreateArtical" className="creContentLink">
+                                <a href="/Content/ArticalCreations" className="creContentLink">
                                     <div className="creContent">
                                         <span className="creContTxt">Write Artical</span>
                                     </div>

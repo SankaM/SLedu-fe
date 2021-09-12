@@ -62,7 +62,7 @@ const LeftPara = (props) => {
         border: "none",
         outline: "none",
       }}
-      onClick={()=>props.removePara(props.paraNo)}
+      onClick={()=>dispatch(articalAction.removePara(props.paraNo))}
     >
       <CloseIcon />
     </IconButton>{" "}

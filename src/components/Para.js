@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-// import "../Style/ArticalPage.css";
 import draftToHtml from "draftjs-to-html";
 import { EditorState, convertToRaw } from "draft-js";
 import { useDispatch, useSelector } from "react-redux";
@@ -32,7 +31,7 @@ const Para = (props) => {
             border: "none",
             outline: "none",
           }}
-          onClick={()=>props.removePara(props.paraNo)}
+          onClick={()=>dispatch(articalAction.removePara(props.paraNo))}
         >
           <CloseIcon />
         </IconButton>{" "}

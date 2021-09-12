@@ -5,3 +5,4 @@ export const ADD_RIGHT_PARA = 'ADD_RIGHT_PARA';
 export const ADD_PARA_TEXT = 'ADD_PARA_TEXT';
 export const ADD_SUB_IMG = 'ADD_SUB_IMG';
 export const ADD_MAIN_IMG = 'ADD_MAIN_IMG';
+export const REMOVE_PARA = 'REMOVE_PARA';
