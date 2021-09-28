@@ -6,10 +6,12 @@ import * as serviceWorker from "./serviceWorker";
 import { createStore,combineReducers,applyMiddleware,compose} from "redux";
 import { Provider } from "react-redux";
 import articalReducer from "./store/reducers/articalReducer";
+import quationReducer from "./store/reducers/questionReducer";
 import thunk from 'redux-thunk'
 
 const rootReducer = combineReducers({
-  ar:articalReducer
+  ar:articalReducer,
+  qr:quationReducer
 })
 
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;

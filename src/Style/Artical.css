@@ -1210,7 +1210,23 @@
   flex: 50% 1;
   max-width: 80%;
 }
-.admin_sideMenu{
+.admin_sideMenu {
   width: 95%;
   margin: 5px auto;
+}
+.mRow {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.admin_bg_dark_1{
+  background-color:rgb(28, 31, 17);
+}
+.admin_bg_dark_2{
+  background-color:rgb(53, 58, 33);
+}
+.creQ_sec{
+  padding: 10px 20px;
+  background-color: forestgreen;
 }
